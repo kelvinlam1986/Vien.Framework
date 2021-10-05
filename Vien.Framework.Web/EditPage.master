@@ -1,0 +1,32 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EditPage.master.cs" Inherits="Vien.Framework.Web.EditPage" %>
+
+<%@ Register Assembly="View.Framework.WebControls" Namespace="View.Framework.WebControls" TagPrefix="cc1" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <h3 class="page-header">Chương trình dùng để phân quyền tài khoản AD</h3>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <asp:ContentPlaceHolder ID="PanelHeadingHolder" runat="server"></asp:ContentPlaceHolder>
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <cc1:ValidationErrorMessages ID="ErrorMessages" runat="server" />
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <asp:ContentPlaceHolder ID="EditInfoHolder" runat="server"></asp:ContentPlaceHolder>
+                        </div>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+</asp:Content>

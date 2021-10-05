@@ -1,0 +1,52 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EditGrid.master.cs" Inherits="Vien.Framework.Web.EditGrid" %>
+
+<%@ Register Assembly="View.Framework.WebControls" Namespace="View.Framework.WebControls" TagPrefix="cc1" %>
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+    <script language="javascript" type="text/javascript">
+        function ConfirmDelete() {
+            return confirm("Bạn có chắc muốn xóa dữ liệu này ?");
+        }
+    </script>
+</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+     <h3 class="page-header">Chương trình dùng để phân quyền tài khoản AD</h3>
+     <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                             <asp:ContentPlaceHolder ID="PanelHeadingHolder" runat="server"></asp:ContentPlaceHolder>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <cc1:ValidationErrorMessages ID="ErrorMessages" runat="server" />
+                            <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                          <asp:Button  ID="btnAddNew" CssClass="btn btn-primary" runat="server" Text="Thêm mới" OnClick="btnAddNew_Click" />
+                                          <asp:Button  ID="btnPrint" CssClass="btn btn-primary" runat="server" Text="In" OnClick="btnPrint_Click" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div id="dataTables-example_filter" class="dataTables_filter">
+                                            <label>Tìm kiếm:<asp:TextBox runat="server" ID="txtSearch" type="search" class="form-control input-sm" placeholder="" aria-controls="dataTables-example"></asp:TextBox></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <hr style="margin:1px; padding:1px; visibility:hidden"  />
+                                
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <asp:ContentPlaceHolder ID="GridHolder" runat="server"></asp:ContentPlaceHolder>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+</asp:Content>

@@ -19,6 +19,8 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <asp:ContentPlaceHolder ID="EditInfoHolder" runat="server"></asp:ContentPlaceHolder>
+                            <asp:Button ID="btnSave" runat="server" Text="Lưu" OnClick="btnSave_Click" CssClass="btn btn-primary" />
+                            <asp:Button ID="btnCancel" runat="server" Text="Thoát" OnClick="btnCancel_Click" CssClass="btn btn-success" />
                         </div>
                     </div>
                     <!-- /.table-responsive -->

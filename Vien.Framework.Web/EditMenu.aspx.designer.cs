@@ -76,5 +76,19 @@ namespace Vien.Framework.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox ckIsAlwaysEnabled;
+
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new Vien.Framework.Web.EditPage Master
+        {
+            get
+            {
+                return ((Vien.Framework.Web.EditPage)(base.Master));
+            }
+        }
     }
 }

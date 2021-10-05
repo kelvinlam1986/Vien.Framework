@@ -8,10 +8,10 @@ namespace Vien.Framework.Application
     {
         public BaseModel() { }
 
-        public DateTime CreatedDate { get; private set; }
-        public string CreatedBy { get; private set; }
-        public DateTime UpdatedDate { get; private set; }
-        public string UpdatedBy { get; private set; }
+        public DateTime CreatedDate { get; set; }
+        public string CreatedBy { get; set; }
+        public DateTime UpdatedDate { get; set; }
+        public string UpdatedBy { get;  set; }
 
         /// <summary>
         /// This returns the text that should appear in a list box or drop down list for this object.
@@ -48,7 +48,7 @@ namespace Vien.Framework.Application
         /// <summary>
         /// This method will add or update a record.
         /// </summary>
-        public abstract bool Save(ref ValidationErrors validationErrors, int userAccountId);
+        public abstract bool Save(ref ValidationErrors validationErrors, string userName);
 
         /// <summary>
         /// This method validates the object's data before trying to save the record.  If there is a validation error
@@ -75,7 +75,6 @@ namespace Vien.Framework.Application
             if (validationErrors.Count == 0)
             {
                 this.DeleteForReal();
-
                 return true;
             }
             else

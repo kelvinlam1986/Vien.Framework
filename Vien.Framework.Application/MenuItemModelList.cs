@@ -6,6 +6,7 @@ using Vien.Framework.Data.Entities;
 
 namespace Vien.Framework.Application
 {
+    [Serializable()]
     public class MenuItemModelList : BaseModelList<MenuItemModel>
     {
         public override void Load()

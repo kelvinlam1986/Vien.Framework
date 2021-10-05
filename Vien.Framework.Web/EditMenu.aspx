@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/EditPage.master" AutoEventWireup="true" CodeBehind="EditMenu.aspx.cs" Inherits="Vien.Framework.Web.EditMenu" %>
-
+<%@ MasterType virtualPath="~/EditPage.master"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="PanelHeadingHolder" runat="server">
     Cập nhật Menu
 </asp:Content>
@@ -34,6 +34,5 @@
             <asp:CheckBox ID="ckIsAlwaysEnabled" runat="server" />
             Luôn hiển thị</label>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-    <button type="submit" class="btn btn-success">Trở về</button>
+    
 </asp:Content>

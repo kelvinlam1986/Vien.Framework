@@ -7,6 +7,8 @@ namespace Vien.Framework.Web
 {
     public partial class EditMenu : BaseEditPage<MenuItemModel>
     {
+        private const string VIEW_STATE_KEY_MENU = "Menu";
+
         public override string MenuItemName()
         {
             return "Trang chủ";
@@ -14,7 +16,7 @@ namespace Vien.Framework.Web
 
         protected override void GoToGridPage()
         {
-            Response.Redirect("Default.apsx");
+            Response.Redirect("Default");
         }
 
         /// <summary>
@@ -31,14 +33,70 @@ namespace Vien.Framework.Web
             menuItemModel.MenuItemName = txtMenuItemName.Text;
             menuItemModel.Description = txtDescription.Text;
             menuItemModel.Url = txtUrl.Text;
+            menuItemModel.DisplaySequence = Convert.ToInt16(ddlSequence.SelectedValue);
+            if (ddlParentMenuItemId.SelectedValue != "")
+            {
+                menuItemModel.ParentMenuItemId = Convert.ToInt32(ddlParentMenuItemId.SelectedValue);
+            }
+            menuItemModel.Icon = txtIcon.Text;
+            menuItemModel.IsAlwaysEnabled = ckIsAlwaysEnabled.Checked;
+            if (string.IsNullOrEmpty(GetId()))
+            {
+                menuItemModel.CreatedBy = "Admin";
+                menuItemModel.CreatedDate = DateTime.Now;
+            }
+
+            menuItemModel.UpdatedBy = "Admin";
+            menuItemModel.UpdatedDate = DateTime.Now;
+
         }
 
-        protected override void LoadScreenFromObject(MenuItemModel baseEO)
+        protected override void LoadScreenFromObject(MenuItemModel menuItemModel)
         {
+            txtMenuItemName.Text = menuItemModel.MenuItemName;
+            txtDescription.Text = menuItemModel.Description;
+            txtUrl.Text = menuItemModel.Url;
+            txtIcon.Text = menuItemModel.Icon;
+            ckIsAlwaysEnabled.Checked = menuItemModel.IsAlwaysEnabled;
+            ddlSequence.SelectedValue = menuItemModel.DisplaySequence.ToString();
+            if (menuItemModel.ParentMenuItemId == null)
+            {
+                ddlParentMenuItemId.SelectedValue = "";
+            }
+            else
+            {
+                ddlParentMenuItemId.SelectedValue = menuItemModel.ParentMenuItemId.ToString();
+            }
+            
+            ViewState[VIEW_STATE_KEY_MENU] = menuItemModel;
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Master.SaveButton_Click += new EditPage.ButtonClickedHandler(Master_SaveButton_Click);
+            Master.CancelButton_Click += new EditPage.ButtonClickedHandler(Master_CancelButton_Click);
+        }
+
+        private void Master_CancelButton_Click(object sender, EventArgs e)
+        {
+            GoToGridPage();
+        }
+
+        private void Master_SaveButton_Click(object sender, EventArgs e)
+        {
+            ValidationErrors validationErrors = new ValidationErrors();
+
+            var menuItem = (MenuItemModel)ViewState[VIEW_STATE_KEY_MENU];
+            LoadObjectFromScreen(menuItem);
+
+            if (!menuItem.Save(ref validationErrors, "Admin"))
+            {
+                Master.ValidationErrors = validationErrors;
+            }
+            else
+            {
+                GoToGridPage();
+            }
         }
 
         private void LoadDropdownSequence()

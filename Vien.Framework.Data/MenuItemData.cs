@@ -34,7 +34,7 @@ namespace Vien.Framework.Data
             }
         }
 
-        public UserAccount GetById(int id)
+        public MenuItem GetById(int id)
         {
             string sql = "SELECT * FROM dbo.MenuItem WHERE Id = @Id";
 
@@ -42,8 +42,8 @@ namespace Vien.Framework.Data
             {
                 using (var connection = new SqlConnection(ConnectionString))
                 {
-                    var account = connection.QueryFirst<UserAccount>(sql, new { Id = id });
-                    return account;
+                    var menuItem = connection.QueryFirst<MenuItem>(sql, new { Id = id });
+                    return menuItem;
                 }
             }
             catch (Exception)
@@ -149,6 +149,30 @@ namespace Vien.Framework.Data
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        public bool CheckExisting(int id)
+        {
+            var existingItem = GetById(id);
+            return existingItem != null;
+        }
+
+        public bool CheckExistingName(int id, string name)
+        {
+            string sql = "SELECT * FROM dbo.MenuItem WHERE MenuItemName = @Name AND Id != @Id";
+
+            try
+            {
+                using (var connection = new SqlConnection(ConnectionString))
+                {
+                    var menuItem = connection.QueryFirstOrDefault<MenuItem>(sql, new { Id = id, Name = name });
+                    return menuItem != null;
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
     }

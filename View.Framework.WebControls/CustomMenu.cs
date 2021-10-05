@@ -41,11 +41,11 @@ namespace View.Framework.WebControls
                     html += "<li>";
                     if (mi.ChildMenuItems.Count == 0)
                     {
-                        html += $"<a href='{parentUrl}'><i class='fa {mi.Icon}'></i>&nbsp;{mi.MenuItemName}</a>";
+                        html += $"<a href='{parentUrl}'><i class='fa {mi.Icon}'></i>&nbsp;{mi.DisplayName}</a>";
                     }
                     else
                     {
-                        html += $"<a href='#'><i class='fa {mi.Icon}'></i>&nbsp;{mi.MenuItemName}<span class='fa arrow'></span></a>";
+                        html += $"<a href='#'><i class='fa {mi.Icon}'></i>&nbsp;{mi.DisplayName}<span class='fa arrow'></span></a>";
 
                     }
 
@@ -58,7 +58,7 @@ namespace View.Framework.WebControls
                         {
                             var childUrl = string.IsNullOrEmpty(mi.Url) ? "#" : "";
                             html += "<li>";
-                            html += $"<a href='{childUrl}'><i class='fa {cmi.Icon}'></i>&nbsp;{cmi.MenuItemName}</a>";
+                            html += $"<a href='{childUrl}'><i class='fa {cmi.Icon}'></i>&nbsp;{cmi.DisplayName}</a>";
                             html += "</li>";
                         }
                         html += "</ul>";

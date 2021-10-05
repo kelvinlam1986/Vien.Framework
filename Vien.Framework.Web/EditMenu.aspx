@@ -10,6 +10,10 @@
         <asp:TextBox ID="txtMenuItemName" runat="server" CssClass="form-control" />
     </div>
     <div class="form-group">
+        <label for="txtDisplayName">Tên hiển thị:</label>
+        <asp:TextBox ID="txtDisplayName" runat="server" CssClass="form-control" />
+    </div>
+    <div class="form-group">
         <label for="txtDescription">Mô tả:</label>
         <asp:TextBox ID="txtDescription" runat="server" TextMode="MultiLine" CssClass="form-control" />
     </div>

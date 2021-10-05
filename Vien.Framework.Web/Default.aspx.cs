@@ -16,8 +16,6 @@ namespace Vien.Framework.Web
             Master.AddButton_Click += new EditGrid.ButtonClickedHandler(Master_AddButton_Click);
             if (!IsPostBack)
             {
-                var data = new UserAccountData();
-                var list = data.GetAll();
                 CustomGridView1.ListClassName = typeof(MenuItemModelList).AssemblyQualifiedName;
                 CustomGridView1.LoadMethodName = "Load";
 

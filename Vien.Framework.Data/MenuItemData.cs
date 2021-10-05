@@ -54,8 +54,8 @@ namespace Vien.Framework.Data
 
         public override int Insert(MenuItem entity)
         {
-            string sql = @"INSERT INTO dbo.MenuItem (MenuItemName, Description, Url, ParentMenuItemId, DisplaySequence, IsAlwaysEnabled, Icon, CreatedDate, CreatedBy, UpdatedDate, UpdatedBy) " +
-                        "VALUES(@MenuItemName, @Description, @Url, @ParentMenuItemId, @DisplaySequence, @IsAlwaysEnabled, @Icon, @CreatedDate, @CreatedBy, @UpdatedDate, @UpdatedBy)";
+            string sql = @"INSERT INTO dbo.MenuItem (MenuItemName, DisplayName, Description, Url, ParentMenuItemId, DisplaySequence, IsAlwaysEnabled, Icon, CreatedDate, CreatedBy, UpdatedDate, UpdatedBy) " +
+                        "VALUES(@MenuItemName, @DisplayName, @Description, @Url, @ParentMenuItemId, @DisplaySequence, @IsAlwaysEnabled, @Icon, @CreatedDate, @CreatedBy, @UpdatedDate, @UpdatedBy)";
             try
             {
                 using (var connection = new SqlConnection(ConnectionString))
@@ -64,6 +64,7 @@ namespace Vien.Framework.Data
                         new
                         {
                             MenuItemName = entity.MenuItemName,
+                            DisplayName = entity.DisplayName,
                             Description = entity.Description,
                             Url = entity.Url,
                             ParentMenuItemId = entity.ParentMenuItemId,
@@ -111,6 +112,7 @@ namespace Vien.Framework.Data
         {
             string sql = "UPDATE dbo.MenuItem " +
                         "SET MenuItemName = @MenuItemName, " +
+                            "DisplayName = @DisplayName, " +
                             "Description = @Description, " +
                             "Url = @Url, " +
                             "ParentMenuItemId = @ParentMenuItemId, " +
@@ -130,6 +132,7 @@ namespace Vien.Framework.Data
                         new
                         {
                             MenuItemName = entity.MenuItemName,
+                            DisplayName = entity.DisplayName,
                             Description = entity.Description,
                             Url = entity.Url,
                             ParentMenuItemId = entity.ParentMenuItemId,

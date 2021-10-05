@@ -24,6 +24,15 @@ namespace Vien.Framework.Web
         protected global::System.Web.UI.WebControls.TextBox txtMenuItemName;
 
         /// <summary>
+        /// txtDisplayName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDisplayName;
+
+        /// <summary>
         /// txtDescription control.
         /// </summary>
         /// <remarks>

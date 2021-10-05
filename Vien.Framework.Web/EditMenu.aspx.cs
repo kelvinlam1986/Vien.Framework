@@ -31,6 +31,7 @@ namespace Vien.Framework.Web
         protected override void LoadObjectFromScreen(MenuItemModel menuItemModel)
         {
             menuItemModel.MenuItemName = txtMenuItemName.Text;
+            menuItemModel.DisplayName = txtDisplayName.Text;
             menuItemModel.Description = txtDescription.Text;
             menuItemModel.Url = txtUrl.Text;
             menuItemModel.DisplaySequence = Convert.ToInt16(ddlSequence.SelectedValue);
@@ -54,6 +55,7 @@ namespace Vien.Framework.Web
         protected override void LoadScreenFromObject(MenuItemModel menuItemModel)
         {
             txtMenuItemName.Text = menuItemModel.MenuItemName;
+            txtDisplayName.Text = menuItemModel.DisplayName;
             txtDescription.Text = menuItemModel.Description;
             txtUrl.Text = menuItemModel.Url;
             txtIcon.Text = menuItemModel.Icon;

@@ -14,6 +14,7 @@ namespace Vien.Framework.Application
 
         public int Id { get; set; }
         public string MenuItemName { get; set; }
+        public string DisplayName { get; set; }
         public string Description { get; set; }
         public string Url { get; set; }
         public Nullable<int> ParentMenuItemId { get; set; }
@@ -61,6 +62,7 @@ namespace Vien.Framework.Application
                     {
                         var menuItem = new MenuItem();
                         menuItem.MenuItemName = MenuItemName;
+                        menuItem.DisplayName = DisplayName;
                         menuItem.Description = Description;
                         menuItem.Url = Url;
                         menuItem.Icon = Icon;
@@ -87,6 +89,7 @@ namespace Vien.Framework.Application
                     {
                         var menuItem = new MenuItemData().GetById(Id);
                         menuItem.MenuItemName = MenuItemName;
+                        menuItem.DisplayName = DisplayName;
                         menuItem.Description = Description;
                         menuItem.Url = Url;
                         menuItem.Icon = Icon;
@@ -116,7 +119,7 @@ namespace Vien.Framework.Application
 
                
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return false;
             }
@@ -139,6 +142,7 @@ namespace Vien.Framework.Application
             MenuItem menuItem = (MenuItem)entity;
             Id = menuItem.Id;
             MenuItemName = menuItem.MenuItemName;
+            DisplayName = menuItem.DisplayName;
             Description = menuItem.Description;
             Url = menuItem.Url;
             ParentMenuItemId = menuItem.ParentMenuItemId;
@@ -152,6 +156,11 @@ namespace Vien.Framework.Application
             if (string.IsNullOrEmpty(MenuItemName))
             {
                 validationErrors.Add("Bạn phải nhập tên Menu");
+            }
+
+            if (string.IsNullOrEmpty(DisplayName))
+            {
+                validationErrors.Add("Bạn phải nhập tên hiển thị");
             }
 
             if (DisplaySequence <= 0)

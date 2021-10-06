@@ -40,6 +40,29 @@ namespace Vien.Framework.Application
             }
         }
 
+        public void LoadAll()
+        {
+            List<MenuItem> menuItems = new MenuItemData().GetAll();
+            foreach (var menuItem in menuItems)
+            {
+                var menuItemModel = new MenuItemModel();
+                menuItemModel.MapEntityToProperties(menuItem);
+                this.Add(menuItemModel);
+            }
+      
+        }
+
+        public void Search(string keyword)
+        {
+            List<MenuItem> menuItems = new MenuItemData().Search(keyword);
+            foreach (var menuItem in menuItems)
+            {
+                var menuItemModel = new MenuItemModel();
+                menuItemModel.MapEntityToProperties(menuItem);
+                this.Add(menuItemModel);
+            }
+        }
+
         private MenuItemModel FindOrLoadParent(List<MenuItem> menuItems, int parentMenuItemId)
         {
             // Find the menu item in the entity list.

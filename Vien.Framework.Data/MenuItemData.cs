@@ -17,6 +17,43 @@ namespace Vien.Framework.Data
         {
         }
 
+        public List<MenuItem> Search(string keyword)
+        {
+           
+            if (string.IsNullOrWhiteSpace(keyword)  == false)
+            {
+                string sql = "SELECT * FROM dbo.MenuItem WHERE MenuItemName like @MenuItemName OR DisplayName like @MenuItemName ORDER BY ParentMenuItemId, DisplaySequence ";
+                try
+                {
+                    using (var connection = new SqlConnection(ConnectionString))
+                    {
+                        var menuItems = connection.Query<MenuItem>(sql, new { MenuItemName = $"%{keyword}%" }).ToList();
+                        return menuItems;
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+            else
+            {
+                string sql = "SELECT * FROM dbo.MenuItem ORDER BY ParentMenuItemId, DisplaySequence";
+                try
+                {
+                    using (var connection = new SqlConnection(ConnectionString))
+                    {
+                        var menuItems = connection.Query<MenuItem>(sql).ToList();
+                        return menuItems;
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+        }
+
         public List<MenuItem> GetAll()
         {
             string sql = "SELECT * FROM dbo.MenuItem ORDER BY ParentMenuItemId, DisplaySequence";

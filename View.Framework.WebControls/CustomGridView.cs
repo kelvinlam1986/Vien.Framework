@@ -73,6 +73,10 @@ namespace View.Framework.WebControls
             {
                 return _methodParameters;
             }
+            set
+            {
+                _methodParameters = value;
+            }
         }
 
         public new object DataSource

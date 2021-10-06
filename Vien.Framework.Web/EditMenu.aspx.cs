@@ -16,7 +16,7 @@ namespace Vien.Framework.Web
 
         protected override void GoToGridPage()
         {
-            Response.Redirect("Default");
+            Response.Redirect("MenuList");
         }
 
         /// <summary>

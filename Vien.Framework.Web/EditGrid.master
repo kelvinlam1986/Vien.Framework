@@ -28,7 +28,9 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div id="dataTables-example_filter" class="dataTables_filter">
-                                            <label>Tìm kiếm:<asp:TextBox runat="server" ID="txtSearch" type="search" class="form-control input-sm" placeholder="" aria-controls="dataTables-example"></asp:TextBox></label>
+                                            <label>Tìm kiếm:<asp:TextBox runat="server" ID="txtSearch" type="search" 
+                                                class="form-control input-sm" placeholder="" aria-controls="dataTables-example"></asp:TextBox></label>
+                                               <asp:Button  ID="btnSearch" CssClass="btn btn-primary" runat="server" Text="Tìm kiếm" OnClick="btnSearch_Click" />
                                         </div>
                                     </div>
                                 </div>

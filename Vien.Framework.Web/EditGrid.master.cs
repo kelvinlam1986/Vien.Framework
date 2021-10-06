@@ -7,8 +7,10 @@ namespace Vien.Framework.Web
     public partial class EditGrid : System.Web.UI.MasterPage
     {
         public delegate void ButtonClickedHandler(object sender, EventArgs e);
+
         public event ButtonClickedHandler AddButton_Click;
         public event ButtonClickedHandler PrintButton_Click;
+        public event ButtonClickedHandler SearchButton_Click;
 
         protected override void OnPreRender(EventArgs e)
         {
@@ -41,6 +43,14 @@ namespace Vien.Framework.Web
             }
         }
 
+        public string SearchString
+        {
+            get
+            {
+                return txtSearch.Text;
+            }
+        }
+
         public ValidationErrors ValidationErrors
         {
             get
@@ -50,6 +60,14 @@ namespace Vien.Framework.Web
             set
             {
                 ErrorMessages.ValidationErrors = value;
+            }
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (SearchButton_Click != null)
+            {
+                SearchButton_Click(sender, e);
             }
         }
     }

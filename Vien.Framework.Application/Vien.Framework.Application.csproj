@@ -55,6 +55,7 @@
     </Compile>
     <Compile Include="UI\Globals.cs" />
     <Compile Include="UI\StringHelpers.cs" />
+    <Compile Include="UserAccountModel.cs" />
     <Compile Include="ValidationErrors.cs" />
   </ItemGroup>
   <ItemGroup>

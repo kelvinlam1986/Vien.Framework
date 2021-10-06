@@ -50,10 +50,10 @@
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Entities\MenuItem.cs" />
     <Compile Include="IBaseData.cs" />
-    <Compile Include="MenuItemData.cs" />
+    <Compile Include="Repo\MenuItemData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\UserAccount.cs" />
-    <Compile Include="UserAccountData.cs" />
+    <Compile Include="Repo\UserAccountData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

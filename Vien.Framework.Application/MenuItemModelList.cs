@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Vien.Framework.Data;
 using Vien.Framework.Data.Entities;
+using Vien.Framework.Data.Repo;
 
 namespace Vien.Framework.Application
 {

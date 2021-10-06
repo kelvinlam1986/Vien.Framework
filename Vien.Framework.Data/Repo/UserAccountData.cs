@@ -1,33 +1,34 @@
-﻿using System;
-using System.Data.SqlClient;
-using Vien.Framework.Data.Entities;
-using Dapper;
+﻿using Dapper;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
+using Vien.Framework.Data.Entities;
 
-namespace Vien.Framework.Data
+namespace Vien.Framework.Data.Repo
 {
-    public class MenuItemData : BaseData<MenuItem>
+    public class UserAccountData : BaseData<UserAccount>
     {
-        public MenuItemData(string connectionString) : base(connectionString)
+        public UserAccountData(string connectionString) : base(connectionString)
         {
         }
 
-        public MenuItemData()
+        public UserAccountData()
         {
         }
 
-        public List<MenuItem> Search(string keyword)
+        public List<UserAccount> Search(string keyword)
         {
-           
-            if (string.IsNullOrWhiteSpace(keyword)  == false)
+
+            if (string.IsNullOrWhiteSpace(keyword) == false)
             {
-                string sql = "SELECT * FROM dbo.MenuItem WHERE MenuItemName like @MenuItemName OR DisplayName like @MenuItemName ORDER BY ParentMenuItemId, DisplaySequence ";
+                string sql = "SELECT * FROM dbo.UserAccount WHERE WindowAccountName like @Keyword " +
+                    "OR FullName like @Keyword ORDER BY CreatedDate, UpdatedDate ";
                 try
                 {
                     using (var connection = new SqlConnection(ConnectionString))
                     {
-                        var menuItems = connection.Query<MenuItem>(sql, new { MenuItemName = $"%{keyword}%" }).ToList();
+                        var menuItems = connection.Query<UserAccount>(sql, new { Keyword = $"%{keyword}%" }).ToList();
                         return menuItems;
                     }
                 }
@@ -38,12 +39,12 @@ namespace Vien.Framework.Data
             }
             else
             {
-                string sql = "SELECT * FROM dbo.MenuItem ORDER BY ParentMenuItemId, DisplaySequence";
+                string sql = "SELECT * FROM dbo.UserAccount ORDER BY CreatedDate, UpdatedDate";
                 try
                 {
                     using (var connection = new SqlConnection(ConnectionString))
                     {
-                        var menuItems = connection.Query<MenuItem>(sql).ToList();
+                        var menuItems = connection.Query<UserAccount>(sql).ToList();
                         return menuItems;
                     }
                 }
@@ -54,14 +55,14 @@ namespace Vien.Framework.Data
             }
         }
 
-        public List<MenuItem> GetAll()
+        public List<UserAccount> GetAll()
         {
-            string sql = "SELECT * FROM dbo.MenuItem ORDER BY ParentMenuItemId, DisplaySequence";
+            string sql = "SELECT * FROM dbo.UserAccount ORDER BY CreatedDate, UpdatedDate";
             try
             {
                 using (var connection = new SqlConnection(ConnectionString))
                 {
-                    var menuItems = connection.Query<MenuItem>(sql).ToList();
+                    var menuItems = connection.Query<UserAccount>(sql).ToList();
                     return menuItems;
                 }
             }
@@ -71,15 +72,15 @@ namespace Vien.Framework.Data
             }
         }
 
-        public MenuItem GetById(int id)
+        public UserAccount GetById(int id)
         {
-            string sql = "SELECT * FROM dbo.MenuItem WHERE Id = @Id";
+            string sql = "SELECT * FROM dbo.UserAccount WHERE Id = @Id";
 
             try
             {
                 using (var connection = new SqlConnection(ConnectionString))
                 {
-                    var menuItem = connection.QueryFirst<MenuItem>(sql, new { Id = id });
+                    var menuItem = connection.QueryFirst<UserAccount>(sql, new { Id = id });
                     return menuItem;
                 }
             }
@@ -89,10 +90,10 @@ namespace Vien.Framework.Data
             }
         }
 
-        public override int Insert(MenuItem entity)
+        public override int Insert(UserAccount entity)
         {
-            string sql = @"INSERT INTO dbo.MenuItem (MenuItemName, DisplayName, Description, Url, ParentMenuItemId, DisplaySequence, IsAlwaysEnabled, Icon, CreatedDate, CreatedBy, UpdatedDate, UpdatedBy) " +
-                        "VALUES(@MenuItemName, @DisplayName, @Description, @Url, @ParentMenuItemId, @DisplaySequence, @IsAlwaysEnabled, @Icon, @CreatedDate, @CreatedBy, @UpdatedDate, @UpdatedBy)";
+            string sql = @"INSERT INTO dbo.UserAccount (WindowAccountName, FullName, Email, IsActive, CreatedDate, CreatedBy, UpdatedDate, UpdatedBy) " +
+                        "VALUES(@WindowAccountName, @FullName, @Email, @IsActive, @CreatedDate, @CreatedBy, @UpdatedDate, @UpdatedBy)";
             try
             {
                 using (var connection = new SqlConnection(ConnectionString))
@@ -100,14 +101,10 @@ namespace Vien.Framework.Data
                     int rowEffected = connection.Execute(sql,
                         new
                         {
-                            MenuItemName = entity.MenuItemName,
-                            DisplayName = entity.DisplayName,
-                            Description = entity.Description,
-                            Url = entity.Url,
-                            ParentMenuItemId = entity.ParentMenuItemId,
-                            DisplaySequence = entity.DisplaySequence,
-                            IsAlwaysEnabled = entity.IsAlwaysEnabled,
-                            Icon = entity.Icon,
+                            WindowAccountName = entity.WindowAccountName,
+                            FullName = entity.FullName,
+                            Email = entity.Email,
+                            IsActive = entity.IsActive,
                             CreatedDate = entity.CreatedDate,
                             CreatedBy = entity.CreatedBy,
                             UpdatedDate = entity.UpdatedDate,
@@ -123,11 +120,11 @@ namespace Vien.Framework.Data
             }
         }
 
-        public override int Remove(MenuItem entity)
+        public override int Remove(UserAccount entity)
         {
             try
             {
-                string sql = "DELETE FROM dbo.MenuItem WHERE Id = @Id";
+                string sql = "DELETE FROM dbo.UserAccount WHERE Id = @Id";
                 using (var connection = new SqlConnection(ConnectionString))
                 {
                     int rowEffected = connection.Execute(sql,
@@ -145,17 +142,13 @@ namespace Vien.Framework.Data
             }
         }
 
-        public override int Update(MenuItem entity)
+        public override int Update(UserAccount entity)
         {
-            string sql = "UPDATE dbo.MenuItem " +
-                        "SET MenuItemName = @MenuItemName, " +
-                            "DisplayName = @DisplayName, " +
-                            "Description = @Description, " +
-                            "Url = @Url, " +
-                            "ParentMenuItemId = @ParentMenuItemId, " +
-                            "DisplaySequence = @DisplaySequence, " +
-                            "IsAlwaysEnabled = @IsAlwaysEnabled, " +
-                            "Icon = @Icon, " +
+            string sql = "UPDATE dbo.UserAccount " +
+                        "SET WindowAccountName = @WindowAccountName, " +
+                            "FullName = @FullName, " +
+                            "Email = @Email, " +
+                            "IsActive = @IsActive, " +
                             "CreatedDate = @CreatedDate, " +
                             "CreatedBy = @CreatedBy, " +
                             "UpdatedDate = @UpdatedDate, " +
@@ -168,14 +161,10 @@ namespace Vien.Framework.Data
                     int rowEffected = connection.Execute(sql,
                         new
                         {
-                            MenuItemName = entity.MenuItemName,
-                            DisplayName = entity.DisplayName,
-                            Description = entity.Description,
-                            Url = entity.Url,
-                            ParentMenuItemId = entity.ParentMenuItemId,
-                            DisplaySequence = entity.DisplaySequence,
-                            IsAlwaysEnabled = entity.IsAlwaysEnabled,
-                            Icon = entity.Icon,
+                            WindowAccountName = entity.WindowAccountName,
+                            FullName = entity.FullName,
+                            Email = entity.Email,
+                            IsActive = entity.IsActive,
                             CreatedDate = entity.CreatedDate,
                             CreatedBy = entity.CreatedBy,
                             UpdatedDate = entity.UpdatedDate,
@@ -198,15 +187,15 @@ namespace Vien.Framework.Data
             return existingItem != null;
         }
 
-        public bool CheckExistingName(int id, string name)
+        public bool CheckExistingName(int id, string windowAccountName)
         {
-            string sql = "SELECT * FROM dbo.MenuItem WHERE MenuItemName = @Name AND Id != @Id";
+            string sql = "SELECT * FROM dbo.UserAccount WHERE WindowAccountName = @WindowAccountName AND Id != @Id";
 
             try
             {
                 using (var connection = new SqlConnection(ConnectionString))
                 {
-                    var menuItem = connection.QueryFirstOrDefault<MenuItem>(sql, new { Id = id, Name = name });
+                    var menuItem = connection.QueryFirstOrDefault<UserAccount>(sql, new { WindowAccountName = id, Name = windowAccountName });
                     return menuItem != null;
                 }
             }

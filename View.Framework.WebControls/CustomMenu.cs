@@ -37,7 +37,7 @@ namespace View.Framework.WebControls
                 int i = 0;
                 foreach (var mi in MenuItems)
                 {
-                    var parentUrl = string.IsNullOrEmpty(mi.Url) ? "#" : "";
+                    var parentUrl = string.IsNullOrEmpty(mi.Url) ? "#" : mi.Url;
                     html += "<li>";
                     if (mi.ChildMenuItems.Count == 0)
                     {
@@ -56,7 +56,7 @@ namespace View.Framework.WebControls
                         html += "<ul class='nav nav-second-level collapse'>";
                         foreach (var cmi in mi.ChildMenuItems)
                         {
-                            var childUrl = string.IsNullOrEmpty(mi.Url) ? "#" : "";
+                            var childUrl = string.IsNullOrEmpty(mi.Url) ? "#" : mi.Url;
                             html += "<li>";
                             html += $"<a href='{childUrl}'><i class='fa {cmi.Icon}'></i>&nbsp;{cmi.DisplayName}</a>";
                             html += "</li>";

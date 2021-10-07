@@ -17,5 +17,10 @@ namespace Vien.Framework.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        void Application_Error(object sender, EventArgs e)
+        {
+            Response.Redirect("ErrorPage.aspx");
+        }
     }
 }

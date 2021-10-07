@@ -8,7 +8,6 @@ namespace Vien.Framework.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
         }
 
         public override string MenuItemName()

@@ -60,8 +60,6 @@ namespace Vien.Framework.Web
             CustomGridView1.LoadMethodName = "Search";
             CustomGridView1.LoadMethodParameters.Add(this.Master.SearchString);
             CustomGridView1.DataBind();
-
-            // Master.SearchString
         }
 
         public override string MenuItemName()

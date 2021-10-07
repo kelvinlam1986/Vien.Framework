@@ -15,6 +15,7 @@ namespace Vien.Framework.Web
             cmMenu.MenuItems = Globals.GetMenuItems(this.Cache);
             cmMenu.RootPath = BasePage.RootPath(Context);
             cmMenu.CurrentMenuItemName = ((BasePage)Page).MenuItemName();
+            lblCurrentUser.InnerText = System.Web.HttpContext.Current.Request.LogonUserIdentity.Name;
         }
     }
 }

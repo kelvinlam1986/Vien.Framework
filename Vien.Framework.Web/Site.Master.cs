@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Vien.Framework.Application.UI;
+using MinhLam.Framework.Application.UI;
 
-namespace Vien.Framework.Web
+namespace MinhLam.Framework.Web
 {
     public partial class SiteMaster : MasterPage
     {

@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using Vien.Framework.Data.Entities;
+using MinhLam.Framework.Data.Entities;
 
-namespace Vien.Framework.Data.Repo
+namespace MinhLam.Framework.Data.Repo
 {
     public class UserAccountData : BaseData<UserAccount>
     {
@@ -114,7 +114,7 @@ namespace Vien.Framework.Data.Repo
                 }
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 throw;
             }

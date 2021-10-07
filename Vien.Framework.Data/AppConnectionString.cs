@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace Vien.Framework.Data
+namespace MinhLam.Framework.Data
 {
     public sealed class AppConnectionString
     {
@@ -16,7 +16,7 @@ namespace Vien.Framework.Data
             {
                 if (connectionString == "")
                 {
-                    connectionString = ConfigurationManager.ConnectionStrings["VienConnectionString"].ConnectionString;
+                    connectionString = ConfigurationManager.ConnectionStrings["HRConnectionString"].ConnectionString;
                 }
 
                 return connectionString;

@@ -1,6 +1,6 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Vien.Framework.Web.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="MinhLam.Framework.Web.SiteMaster" %>
 
-<%@ Register Assembly="View.Framework.WebControls" Namespace="View.Framework.WebControls" TagPrefix="cc1" %>
+<%@ Register Assembly="MinhLam.Framework.WebControls" Namespace="MinhLam.Framework.WebControls" TagPrefix="cc1" %>
 
 <!DOCTYPE html>
 

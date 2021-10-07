@@ -1,9 +1,9 @@
 ﻿using System;
-using Vien.Framework.Data;
-using Vien.Framework.Data.Entities;
-using Vien.Framework.Data.Repo;
+using MinhLam.Framework.Data;
+using MinhLam.Framework.Data.Entities;
+using MinhLam.Framework.Data.Repo;
 
-namespace Vien.Framework.Application
+namespace MinhLam.Framework.Application
 {
     [Serializable()]
     public class MenuItemModel : BaseModel

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Vien.Framework.Application
+namespace MinhLam.Framework.Application
 {
     [Serializable()]
     public abstract class BaseModelList<T> : List<T>

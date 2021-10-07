@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Web.UI.WebControls;
-using Vien.Framework.Application;
-using Vien.Framework.Application.UI;
+using MinhLam.Framework.Application;
+using MinhLam.Framework.Application.UI;
 
-namespace Vien.Framework.Web
+namespace MinhLam.Framework.Web
 {
     public partial class EditMenu : BaseEditPage<MenuItemModel>
     {

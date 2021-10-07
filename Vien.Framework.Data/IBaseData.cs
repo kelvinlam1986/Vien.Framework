@@ -1,4 +1,4 @@
-﻿namespace Vien.Framework.Data
+﻿namespace MinhLam.Framework.Data
 {
     public interface IBaseData<T> where T: BaseEntity
     {

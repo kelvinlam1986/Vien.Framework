@@ -12,8 +12,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>View.Framework.WebControls</RootNamespace>
-    <AssemblyName>View.Framework.WebControls</AssemblyName>
+    <RootNamespace>MinhLam.Framework.WebControls</RootNamespace>
+    <AssemblyName>MinhLam.Framework.WebControls</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -111,9 +111,9 @@
     <Compile Include="ValidationErrorMessages.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Vien.Framework.Application\Vien.Framework.Application.csproj">
+    <ProjectReference Include="..\Vien.Framework.Application\MinhLam.Framework.Application.csproj">
       <Project>{28c116f9-1d64-4288-8439-2d93fcef8d2d}</Project>
-      <Name>Vien.Framework.Application</Name>
+      <Name>MinhLam.Framework.Application</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

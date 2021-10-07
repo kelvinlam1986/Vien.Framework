@@ -3,7 +3,7 @@ using System.Collections;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace View.Framework.WebControls
+namespace MinhLam.Framework.WebControls
 {
     [ToolboxData("<{0}:CustomGridView runat=server></{0}:CustomGridView>")]
     public class CustomGridView : GridView

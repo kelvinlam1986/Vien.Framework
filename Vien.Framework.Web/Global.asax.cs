@@ -20,7 +20,7 @@ namespace Vien.Framework.Web
 
         void Application_Error(object sender, EventArgs e)
         {
-            Response.Redirect("ErrorPage.aspx");
+            // Response.Redirect("ErrorPage.aspx");
         }
     }
 }

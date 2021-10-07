@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Vien.Framework.Data
+namespace MinhLam.Framework.Data
 {
     public abstract class BaseData<T> : IBaseData<T> where T: BaseEntity, new()
     {

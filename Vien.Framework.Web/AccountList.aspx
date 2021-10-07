@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/EditGrid.master" AutoEventWireup="true" CodeBehind="AccountList.aspx.cs" Inherits="Vien.Framework.Web.AccountList" %>
-<%@ Register Assembly="View.Framework.WebControls" Namespace="View.Framework.WebControls" TagPrefix="cc1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/EditGrid.master" AutoEventWireup="true" CodeBehind="AccountList.aspx.cs" Inherits="MinhLam.Framework.Web.AccountList" %>
+<%@ Register Assembly="MinhLam.Framework.WebControls" Namespace="MinhLam.Framework.WebControls" TagPrefix="cc1" %>
 <%@ MasterType VirtualPath="~/EditGrid.master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="PanelHeadingHolder" runat="server">
     Danh sách tài khoản

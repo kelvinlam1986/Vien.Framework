@@ -1,7 +1,7 @@
 ﻿using System;
-using Vien.Framework.Data;
+using MinhLam.Framework.Data;
 
-namespace Vien.Framework.Application
+namespace MinhLam.Framework.Application
 {
     [Serializable]
     public abstract class BaseModel

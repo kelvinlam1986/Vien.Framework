@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Vien.Framework.Data.Entities
+namespace MinhLam.Framework.Data.Entities
 {
     public class UserAccount : BaseEntity
     {

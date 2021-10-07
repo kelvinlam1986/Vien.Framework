@@ -7,8 +7,8 @@
     <ProjectGuid>{28C116F9-1D64-4288-8439-2D93FCEF8D2D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Vien.Framework.Application</RootNamespace>
-    <AssemblyName>Vien.Framework.Application</AssemblyName>
+    <RootNamespace>MinhLam.Framework.Application</RootNamespace>
+    <AssemblyName>MinhLam.Framework.Application</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -60,9 +60,9 @@
     <Compile Include="ValidationErrors.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Vien.Framework.Data\Vien.Framework.Data.csproj">
+    <ProjectReference Include="..\Vien.Framework.Data\MinhLam.Framework.Data.csproj">
       <Project>{27ABEB0D-2F12-443F-A5C9-1E195BCA7794}</Project>
-      <Name>Vien.Framework.Data</Name>
+      <Name>MinhLam.Framework.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -7,8 +7,8 @@
     <ProjectGuid>{27ABEB0D-2F12-443F-A5C9-1E195BCA7794}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Vien.Framework.Data</RootNamespace>
-    <AssemblyName>Vien.Framework.Data</AssemblyName>
+    <RootNamespace>MinhLam.Framework.Data</RootNamespace>
+    <AssemblyName>MinhLam.Framework.Data</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

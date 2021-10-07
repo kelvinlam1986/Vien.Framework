@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Vien.Framework.Application;
+using MinhLam.Framework.Application;
 
-namespace View.Framework.WebControls
+namespace MinhLam.Framework.WebControls
 {
     [DefaultProperty("Text")]
     [ToolboxData("<{0}:ValidationErrorMessages runat=server></{0}:ValidationErrorMessages>")]

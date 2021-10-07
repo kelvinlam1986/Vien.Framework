@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Vien.Framework.Web
+namespace MinhLam.Framework.Web
 {
 
 
@@ -21,7 +21,7 @@ namespace Vien.Framework.Web
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::View.Framework.WebControls.CustomGridView CustomGridView1;
+        protected global::MinhLam.Framework.WebControls.CustomGridView CustomGridView1;
 
         /// <summary>
         /// Master property.
@@ -29,11 +29,11 @@ namespace Vien.Framework.Web
         /// <remarks>
         /// Auto-generated property.
         /// </remarks>
-        public new Vien.Framework.Web.EditGrid Master
+        public new MinhLam.Framework.Web.EditGrid Master
         {
             get
             {
-                return ((Vien.Framework.Web.EditGrid)(base.Master));
+                return ((MinhLam.Framework.Web.EditGrid)(base.Master));
             }
         }
     }

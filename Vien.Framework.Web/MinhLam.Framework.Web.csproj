@@ -424,17 +424,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Vien.Framework.Application\Vien.Framework.Application.csproj">
+    <ProjectReference Include="..\Vien.Framework.Application\MinhLam.Framework.Application.csproj">
       <Project>{28C116F9-1D64-4288-8439-2D93FCEF8D2D}</Project>
-      <Name>Vien.Framework.Application</Name>
+      <Name>MinhLam.Framework.Application</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Vien.Framework.Data\Vien.Framework.Data.csproj">
+    <ProjectReference Include="..\Vien.Framework.Data\MinhLam.Framework.Data.csproj">
       <Project>{27ABEB0D-2F12-443F-A5C9-1E195BCA7794}</Project>
-      <Name>Vien.Framework.Data</Name>
+      <Name>MinhLam.Framework.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\View.Framework.WebControls\View.Framework.WebControls.csproj">
+    <ProjectReference Include="..\View.Framework.WebControls\MinhLam.Framework.WebControls.csproj">
       <Project>{51290473-8694-4cd4-b130-301df7ec0290}</Project>
-      <Name>View.Framework.WebControls</Name>
+      <Name>MinhLam.Framework.WebControls</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

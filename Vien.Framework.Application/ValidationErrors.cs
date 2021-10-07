@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Vien.Framework.Application
+namespace MinhLam.Framework.Application
 {
     #region ENTValidationError
     /// <summary>

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Vien.Framework.Web
+namespace MinhLam.Framework.Web
 {
 
 
@@ -30,7 +30,7 @@ namespace Vien.Framework.Web
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::View.Framework.WebControls.ValidationErrorMessages ErrorMessages;
+        protected global::MinhLam.Framework.WebControls.ValidationErrorMessages ErrorMessages;
 
         /// <summary>
         /// EditInfoHolder control.

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Vien.Framework.Web
+namespace MinhLam.Framework.Web
 {
 
 
@@ -92,11 +92,11 @@ namespace Vien.Framework.Web
         /// <remarks>
         /// Auto-generated property.
         /// </remarks>
-        public new Vien.Framework.Web.EditPage Master
+        public new MinhLam.Framework.Web.EditPage Master
         {
             get
             {
-                return ((Vien.Framework.Web.EditPage)(base.Master));
+                return ((MinhLam.Framework.Web.EditPage)(base.Master));
             }
         }
     }

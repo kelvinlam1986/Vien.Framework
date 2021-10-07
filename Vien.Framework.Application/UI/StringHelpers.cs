@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 
-namespace Vien.Framework.Application.UI
+namespace MinhLam.Framework.Application.UI
 {
     /// <summary>
     /// Summary description for StringHelpers

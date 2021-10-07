@@ -4,7 +4,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Vien.Framework.Application.UI
+namespace MinhLam.Framework.Application.UI
 {
     public abstract class BasePage : System.Web.UI.Page
     {

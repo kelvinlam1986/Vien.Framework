@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Vien.Framework.Data
+namespace MinhLam.Framework.Data
 {
     public class BaseEntity
     {

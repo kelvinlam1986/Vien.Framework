@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/EditPage.master" AutoEventWireup="true" CodeBehind="EditAccount.aspx.cs" Inherits="Vien.Framework.Web.EditAccount" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/EditPage.master" AutoEventWireup="true" CodeBehind="EditAccount.aspx.cs" Inherits="MinhLam.Framework.Web.EditAccount" %>
 <%@ MasterType virtualPath="~/EditPage.master"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="PanelHeadingHolder" runat="server">
     Cập nhật thông tin tài khoản

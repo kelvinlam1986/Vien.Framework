@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Vien.Framework.Web
+namespace MinhLam.Framework.Web
 {
 
 
@@ -39,7 +39,7 @@ namespace Vien.Framework.Web
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::View.Framework.WebControls.CustomMenu cmMenu;
+        protected global::MinhLam.Framework.WebControls.CustomMenu cmMenu;
 
         /// <summary>
         /// MainContent control.

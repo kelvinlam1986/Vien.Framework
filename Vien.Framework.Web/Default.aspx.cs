@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Web.UI;
-using Vien.Framework.Application.UI;
+using MinhLam.Framework.Application.UI;
 
 namespace Vien.Framework.Web
 {

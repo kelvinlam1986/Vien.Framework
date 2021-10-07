@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Vien.Framework.Data.Entities;
-using Vien.Framework.Data.Repo;
+using MinhLam.Framework.Data.Entities;
+using MinhLam.Framework.Data.Repo;
 
-namespace Vien.Framework.Application
+namespace MinhLam.Framework.Application
 {
     public class UserAccountModelList : BaseModelList<UserAccountModel>
     {

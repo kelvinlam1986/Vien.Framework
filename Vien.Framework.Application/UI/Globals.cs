@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Caching;
 
-namespace Vien.Framework.Application.UI
+namespace MinhLam.Framework.Application.UI
 {
     /// <summary>
     /// Summary description for Globals

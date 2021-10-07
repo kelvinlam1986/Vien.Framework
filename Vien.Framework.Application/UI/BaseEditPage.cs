@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Specialized;
 
-namespace Vien.Framework.Application.UI
+namespace MinhLam.Framework.Application.UI
 {
     /// <summary>
     /// Summary description for BaseEditPage

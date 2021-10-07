@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/EditPage.master" AutoEventWireup="true" CodeBehind="EditMenu.aspx.cs" Inherits="Vien.Framework.Web.EditMenu" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/EditPage.master" AutoEventWireup="true" CodeBehind="EditMenu.aspx.cs" Inherits="MinhLam.Framework.Web.EditMenu" %>
 <%@ MasterType virtualPath="~/EditPage.master"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="PanelHeadingHolder" runat="server">
     Cập nhật Menu

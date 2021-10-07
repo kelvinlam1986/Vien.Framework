@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Data.SqlClient;
-using Vien.Framework.Data.Entities;
+using MinhLam.Framework.Data.Entities;
 using Dapper;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Vien.Framework.Data.Repo
+namespace MinhLam.Framework.Data.Repo
 {
     public class MenuItemData : BaseData<MenuItem>
     {
@@ -117,7 +117,7 @@ namespace Vien.Framework.Data.Repo
                 }
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 throw;
             }

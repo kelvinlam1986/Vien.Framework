@@ -93,27 +93,56 @@ namespace Vien.Framework.Application
 
         protected override void DeleteForReal()
         {
-            throw new NotImplementedException();
+            var repo = new UserAccountData();
+            var userAccount = repo.GetById(Id);
+            new UserAccountData().Remove(userAccount);
         }
 
         protected override string GetDisplayText()
         {
-            throw new NotImplementedException();
+            return "WindowAccountName";
         }
 
         protected override void MapEntityToCustomProperties(BaseEntity entity)
         {
-            throw new NotImplementedException();
+            UserAccount userAccount = (UserAccount)entity;
+            Id = userAccount.Id;
+            WindowAccountName = userAccount.WindowAccountName;
+            FullName = userAccount.FullName;
+            Email = userAccount.Email;
+            IsActive = userAccount.IsActive;
         }
 
         protected override void Validate(ref ValidationErrors validationErrors)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(WindowAccountName))
+            {
+                validationErrors.Add("Bạn phải nhập tên tài khoản");
+            }
+
+            if (string.IsNullOrEmpty(FullName))
+            {
+                validationErrors.Add("Bạn phải nhập họ tên");
+            }
+
+            if (string.IsNullOrEmpty(Email))
+            {
+                validationErrors.Add("Bạn phải nhập địa chỉ email");
+            }
+
+
+            if (new UserAccountData().CheckExistingName(Id, WindowAccountName))
+            {
+                validationErrors.Add("Tên tài khoản của bạn đã tồn tại");
+            }
         }
 
         protected override void ValidateDelete(ref ValidationErrors validationErrors)
         {
-            throw new NotImplementedException();
+            if (new UserAccountData().CheckExisting(Id) == false)
+            {
+                validationErrors.Add("Tài khoản này chưa tồn tại");
+            }
         }
         
         public bool IsNewRecord()

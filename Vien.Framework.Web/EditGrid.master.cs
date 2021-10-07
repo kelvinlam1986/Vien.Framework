@@ -24,7 +24,7 @@ namespace Vien.Framework.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            this.Page.Form.DefaultButton = btnSearch.UniqueID;
         }
 
         protected void btnAddNew_Click(object sender, EventArgs e)

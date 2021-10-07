@@ -11,7 +11,7 @@ namespace Vien.Framework.Web
 
         public override string MenuItemName()
         {
-            return "Trang chủ";
+            return "Home";
         }
 
         protected override void GoToGridPage()

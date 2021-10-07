@@ -5,6 +5,7 @@ using Vien.Framework.Data.Repo;
 
 namespace Vien.Framework.Application
 {
+    [Serializable()]
     public class UserAccountModel : BaseModel
     {
         public int Id { get; set; }

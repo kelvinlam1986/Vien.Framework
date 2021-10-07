@@ -23,7 +23,7 @@ namespace Vien.Framework.Data.Repo
             if (string.IsNullOrWhiteSpace(keyword) == false)
             {
                 string sql = "SELECT * FROM dbo.UserAccount WHERE WindowAccountName like @Keyword " +
-                    "OR FullName like @Keyword ORDER BY CreatedDate, UpdatedDate ";
+                    "OR FullName like @Keyword OR Email like @Keyword ORDER BY CreatedDate, UpdatedDate ";
                 try
                 {
                     using (var connection = new SqlConnection(ConnectionString))
@@ -195,7 +195,7 @@ namespace Vien.Framework.Data.Repo
             {
                 using (var connection = new SqlConnection(ConnectionString))
                 {
-                    var menuItem = connection.QueryFirstOrDefault<UserAccount>(sql, new { WindowAccountName = id, Name = windowAccountName });
+                    var menuItem = connection.QueryFirstOrDefault<UserAccount>(sql, new { WindowAccountName = windowAccountName, Id = id });
                     return menuItem != null;
                 }
             }

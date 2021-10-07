@@ -209,6 +209,7 @@
     <Content Include="Content\vendor\raphael\raphael.js" />
     <Content Include="Content\vendor\raphael\raphael.min.js" />
     <Content Include="Default.aspx" />
+    <Content Include="EditAccount.aspx" />
     <Content Include="EditMenu.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -338,6 +339,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditAccount.aspx.cs">
+      <DependentUpon>EditAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditAccount.aspx.designer.cs">
+      <DependentUpon>EditAccount.aspx</DependentUpon>
     </Compile>
     <Compile Include="EditGrid.master.cs">
       <DependentUpon>EditGrid.master</DependentUpon>

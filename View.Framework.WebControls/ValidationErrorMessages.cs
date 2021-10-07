@@ -27,10 +27,10 @@ namespace View.Framework.WebControls
                 Panel pannelMessage = new Panel();
                 foreach (var ve in ValidationErrors)
                 {
-                    Label labelMessage = new Label();
+                    LiteralControl labelMessage = new LiteralControl();
 
                     //sets the message and the type of alert, than displays the message
-                    labelMessage.Text = ve.ErrorMessage;
+                    labelMessage.Text = $"<p>{ve.ErrorMessage}</p>";
                     pannelMessage.CssClass = string.Format("alert alert-danger alert-dismissable");
                     pannelMessage.Attributes.Add("role", "alert");
                     pannelMessage.Visible = true;

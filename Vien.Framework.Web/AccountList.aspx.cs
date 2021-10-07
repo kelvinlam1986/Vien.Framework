@@ -47,12 +47,15 @@ namespace Vien.Framework.Web
 
         private void Master_SearchButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            CustomGridView1.ListClassName = typeof(UserAccountModelList).AssemblyQualifiedName;
+            CustomGridView1.LoadMethodName = "Search";
+            CustomGridView1.LoadMethodParameters.Add(this.Master.SearchString);
+            CustomGridView1.DataBind();
         }
 
         private void Master_AddButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Response.Redirect("EditAccount.aspx" + EncryptQueryString("id=0"));
         }
 
         protected void CustomGridView1_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -95,7 +98,12 @@ namespace Vien.Framework.Web
 
         private void lbtnDelete_Command(object sender, CommandEventArgs e)
         {
-            throw new NotImplementedException();
+            ValidationErrors validationErrors = new ValidationErrors();
+            UserAccountModel userAccountModel = new UserAccountModel();
+            userAccountModel.Id = Convert.ToInt32(e.CommandArgument);
+            userAccountModel.Delete(ref validationErrors);
+            Master.ValidationErrors = validationErrors;
+            CustomGridView1.DataBind();
         }
 
         public override string MenuItemName()

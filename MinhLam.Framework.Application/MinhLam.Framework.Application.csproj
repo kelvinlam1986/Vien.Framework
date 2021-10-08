@@ -60,7 +60,7 @@
     <Compile Include="ValidationErrors.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Vien.Framework.Data\MinhLam.Framework.Data.csproj">
+    <ProjectReference Include="..\MinhLam.Framework.Data\MinhLam.Framework.Data.csproj">
       <Project>{27ABEB0D-2F12-443F-A5C9-1E195BCA7794}</Project>
       <Name>MinhLam.Framework.Data</Name>
     </ProjectReference>

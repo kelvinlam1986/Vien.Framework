@@ -111,7 +111,7 @@
     <Compile Include="ValidationErrorMessages.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Vien.Framework.Application\MinhLam.Framework.Application.csproj">
+    <ProjectReference Include="..\MinhLam.Framework.Application\MinhLam.Framework.Application.csproj">
       <Project>{28c116f9-1d64-4288-8439-2d93fcef8d2d}</Project>
       <Name>MinhLam.Framework.Application</Name>
     </ProjectReference>

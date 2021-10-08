@@ -48,11 +48,19 @@
     <Compile Include="AppConnectionString.cs" />
     <Compile Include="BaseData.cs" />
     <Compile Include="BaseEntity.cs" />
+    <Compile Include="Entities\Capability.cs" />
     <Compile Include="Entities\MenuItem.cs" />
+    <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\RoleCapability.cs" />
+    <Compile Include="Entities\RoleUserAccount.cs" />
     <Compile Include="IBaseData.cs" />
+    <Compile Include="Repo\CapabilityData.cs" />
     <Compile Include="Repo\MenuItemData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\UserAccount.cs" />
+    <Compile Include="Repo\RoleCapabilityData.cs" />
+    <Compile Include="Repo\RoleData.cs" />
+    <Compile Include="Repo\RoleUserAccountData.cs" />
     <Compile Include="Repo\UserAccountData.cs" />
   </ItemGroup>
   <ItemGroup>

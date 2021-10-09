@@ -59,7 +59,7 @@ namespace MinhLam.Framework.Application
 
         protected override string GetDisplayText()
         {
-            return "Name";
+            return Name;
         }
 
         protected override void MapEntityToCustomProperties(BaseEntity entity)

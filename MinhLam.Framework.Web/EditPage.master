@@ -5,7 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h3 class="page-header">Chương trình dùng để phân quyền tài khoản AD</h3>
+    <h3 class="page-header">Chương trình quản lý chấm công nhân viên</h3>
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12">

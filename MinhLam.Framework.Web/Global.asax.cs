@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MinhLam.Framework.Application.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +17,7 @@ namespace Vien.Framework.Web
             // Code that runs on application startup
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            Globals.ClearCache(HttpContext.Current.Cache);
         }
 
         void Application_Error(object sender, EventArgs e)

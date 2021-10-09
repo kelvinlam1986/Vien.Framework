@@ -1,0 +1,25 @@
+﻿.capabilityHeader {
+    font-weight: bold;
+}
+
+.radiostyle {
+    height: auto;
+}
+
+    .radiostyle label {
+        margin-left: 3px !important;
+        margin-right: 10px !important;
+    }
+
+.tablestyle {
+    height: auto;
+    
+}
+
+    .tablestyle td {
+        padding-right: 10px !important;
+    }
+
+.role-button-group {
+    margin-top: 20px;
+}

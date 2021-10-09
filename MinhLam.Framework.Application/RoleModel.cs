@@ -14,10 +14,14 @@ namespace MinhLam.Framework.Application
         public RoleCapabilityModelList RoleCapabilities { get; set; }
         public RoleUserAccountModelList RoleUserAccounts { get; set; }
 
-        public override void Init()
+        public RoleModel()
         {
             RoleCapabilities = new RoleCapabilityModelList();
             RoleUserAccounts = new RoleUserAccountModelList();
+        }
+
+        public override void Init()
+        {
         }
 
         public override bool Load(object id)
@@ -92,11 +96,13 @@ namespace MinhLam.Framework.Application
                             }
                             else
                             {
+                                Id = 0;
                                 return false;
                             }
                         }
                         else
                         {
+                            Id = 0;
                             return false;
                         }
                     }
@@ -105,6 +111,7 @@ namespace MinhLam.Framework.Application
                 }
                 else
                 {
+                    Id = 0;
                     return false;
                 }
 
@@ -125,7 +132,7 @@ namespace MinhLam.Framework.Application
 
         protected override string GetDisplayText()
         {
-            return "Name";
+            return Name;
         }
 
         protected override bool IsNewRecord()

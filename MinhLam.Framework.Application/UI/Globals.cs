@@ -25,7 +25,6 @@ namespace MinhLam.Framework.Application.UI
 
         public static MenuItemModelList GetMenuItems(Cache cache)
         {
-            cache.Remove(CACHE_KEY_MENU_ITEMS);
             //Check if the menus have been cached.
             if (cache[CACHE_KEY_MENU_ITEMS] == null)
             {
@@ -35,38 +34,46 @@ namespace MinhLam.Framework.Application.UI
             return (MenuItemModelList)cache[CACHE_KEY_MENU_ITEMS];
         }
 
-        //public static ENTUserAccountEOList GetUsers(Cache cache)
-        //{
-        //    //Check for the users
-        //    if (cache[CACHE_KEY_USERS] == null)
-        //    {
-        //        LoadUsers(cache);
-        //    }
+        public static void ClearCache(Cache cache)
+        {
+            cache.Remove(CACHE_KEY_MENU_ITEMS);
+            cache.Remove(CACHE_KEY_USERS);
+            cache.Remove(CACHE_KEY_ROLES);
+            cache.Remove(CACHE_KEY_CAPABILITIES);
+        }
 
-        //    return (ENTUserAccountEOList)cache[CACHE_KEY_USERS];
-        //}
+        public static UserAccountModelList GetUsers(Cache cache)
+        {
+            //Check for the users
+            if (cache[CACHE_KEY_USERS] == null)
+            {
+                LoadUsers(cache);
+            }
 
-        //public static ENTRoleEOList GetRoles(Cache cache)
-        //{
-        //    //Check for the roles
-        //    if (cache[CACHE_KEY_ROLES] == null)
-        //    {
-        //        LoadRoles(cache);
-        //    }
+            return (UserAccountModelList)cache[CACHE_KEY_USERS];
+        }
 
-        //    return (ENTRoleEOList)cache[CACHE_KEY_ROLES];
-        //}
+        public static RoleModelList GetRoles(Cache cache)
+        {
+            //Check for the roles
+            if (cache[CACHE_KEY_ROLES] == null)
+            {
+                LoadRoles(cache);
+            }
 
-        //public static ENTCapabilityBOList GetCapabilities(Cache cache)
-        //{
-        //    //Check for the roles
-        //    if (cache[CACHE_KEY_CAPABILITIES] == null)
-        //    {
-        //        LoadCapabilities(cache);
-        //    }
+            return (RoleModelList)cache[CACHE_KEY_ROLES];
+        }
 
-        //    return (ENTCapabilityBOList)cache[CACHE_KEY_CAPABILITIES];
-        //}
+        public static CapabilityModelList GetCapabilities(Cache cache)
+        {
+            //Check for the roles
+            if (cache[CACHE_KEY_CAPABILITIES] == null)
+            {
+                LoadCapabilities(cache);
+            }
+
+            return (CapabilityModelList)cache[CACHE_KEY_CAPABILITIES];
+        }
 
         public static void LoadMenuItems(Cache cache)
         {
@@ -77,32 +84,32 @@ namespace MinhLam.Framework.Application.UI
             cache[CACHE_KEY_MENU_ITEMS] = menuItems;
         }
 
-        //public static void LoadUsers(Cache cache)
-        //{
-        //    ENTUserAccountEOList users = new ENTUserAccountEOList();
-        //    users.LoadWithRoles();
+        public static void LoadUsers(Cache cache)
+        {
+            UserAccountModelList users = new UserAccountModelList();
+            users.LoadWithRoles();
 
-        //    cache.Remove(CACHE_KEY_USERS);
-        //    cache[CACHE_KEY_USERS] = users;
-        //}
+            cache.Remove(CACHE_KEY_USERS);
+            cache[CACHE_KEY_USERS] = users;
+        }
 
-        //public static void LoadRoles(Cache cache)
-        //{
-        //    ENTRoleEOList roles = new ENTRoleEOList();
-        //    roles.Load();
+        public static void LoadRoles(Cache cache)
+        {
+            RoleCapabilityModelList roles = new RoleCapabilityModelList();
+            roles.Load();
 
-        //    cache.Remove(CACHE_KEY_ROLES);
-        //    cache[CACHE_KEY_ROLES] = roles;
-        //}
+            cache.Remove(CACHE_KEY_ROLES);
+            cache[CACHE_KEY_ROLES] = roles;
+        }
 
-        //public static void LoadCapabilities(Cache cache)
-        //{
-        //    ENTCapabilityBOList capabilities = new ENTCapabilityBOList();
-        //    capabilities.Load();
+        public static void LoadCapabilities(Cache cache)
+        {
+            CapabilityModelList capabilities = new CapabilityModelList();
+            capabilities.Load();
 
-        //    cache.Remove(CACHE_KEY_CAPABILITIES);
-        //    cache[CACHE_KEY_CAPABILITIES] = capabilities;
-        //}
+            cache.Remove(CACHE_KEY_CAPABILITIES);
+            cache[CACHE_KEY_CAPABILITIES] = capabilities;
+        }
 
         #endregion Methods
     }

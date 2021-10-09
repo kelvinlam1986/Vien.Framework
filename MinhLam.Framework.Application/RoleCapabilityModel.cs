@@ -67,6 +67,10 @@ namespace MinhLam.Framework.Application
                         roleCapability.RoleId = RoleId;
                         roleCapability.CapabilityId = CapabilityId;
                         roleCapability.AccessFlag = (byte)AccessFlag;
+                        roleCapability.CreatedDate = DateTime.Now;
+                        roleCapability.UpdatedDate = DateTime.Now;
+                        roleCapability.CreatedBy = userName;
+                        roleCapability.UpdatedBy = userName;
                         var id = new RoleCapabilityData().Insert(roleCapability);
                         Id = id;
                     }
@@ -76,6 +80,8 @@ namespace MinhLam.Framework.Application
                         roleCapability.RoleId = RoleId;
                         roleCapability.CapabilityId = CapabilityId;
                         roleCapability.AccessFlag = (byte)AccessFlag;
+                        roleCapability.UpdatedDate = DateTime.Now;
+                        roleCapability.UpdatedBy = userName;
                         new RoleCapabilityData().Update(roleCapability);
                         Id = roleCapability.Id;
                     }

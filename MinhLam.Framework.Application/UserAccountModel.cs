@@ -107,7 +107,7 @@ namespace MinhLam.Framework.Application
 
         protected override string GetDisplayText()
         {
-            return "WindowAccountName";
+            return WindowAccountName;
         }
 
         protected override void MapEntityToCustomProperties(BaseEntity entity)

@@ -14,5 +14,9 @@ namespace Vien.Framework.Web
             return "Home";
         }
 
+        public override string[] CapabilityNames()
+        {
+            return new string[] { "" };
+        }
     }
 }

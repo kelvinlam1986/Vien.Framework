@@ -110,6 +110,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\custom.css" />
     <Content Include="Content\data\flot-data.js" />
     <Content Include="Content\data\morris-data.js" />
     <Content Include="Content\dist\css\sb-admin-2.css" />
@@ -211,6 +212,7 @@
     <Content Include="Default.aspx" />
     <Content Include="EditAccount.aspx" />
     <Content Include="EditMenu.aspx" />
+    <Content Include="EditRole.aspx" />
     <Content Include="ErrorPage.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -276,6 +278,7 @@
     <Content Include="EditPage.master" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="MenuList.aspx" />
+    <Content Include="RoleList.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -369,6 +372,13 @@
     <Compile Include="EditPage.master.designer.cs">
       <DependentUpon>EditPage.master</DependentUpon>
     </Compile>
+    <Compile Include="EditRole.aspx.cs">
+      <DependentUpon>EditRole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditRole.aspx.designer.cs">
+      <DependentUpon>EditRole.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ErrorPage.aspx.cs">
       <DependentUpon>ErrorPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -387,6 +397,13 @@
       <DependentUpon>MenuList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleList.aspx.cs">
+      <DependentUpon>RoleList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RoleList.aspx.designer.cs">
+      <DependentUpon>RoleList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

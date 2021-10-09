@@ -135,7 +135,7 @@ namespace MinhLam.Framework.Application
 
         protected override string GetDisplayText()
         {
-            return "MenuItemName";
+            return MenuItemName;
         }
 
         protected override void MapEntityToCustomProperties(BaseEntity entity)

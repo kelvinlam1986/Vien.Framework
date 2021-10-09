@@ -15,28 +15,27 @@ namespace MinhLam.Framework.Application.UI
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
-            // CheckCapabilities();
+            IgnoreCapabilityCheck = true;
+            CheckCapabilities();
         }
 
         #region Properities
 
         public bool ReadOnly { get; set; }
 
-        // public bool IgnoreCapabilityCheck { get; set; }
+        public bool IgnoreCapabilityCheck { get; set; }
 
-        //public ENTUserAccountEO CurrentUser
-        //{
-        //    get
-        //    {
-        //        return Globals.GetUsers(this.Cache).GetByWindowAccountName(this.User.Identity.Name);
-        //    }
-        //}
+        public UserAccountModel CurrentUser
+        {
+            get
+            {
+                return Globals.GetUsers(this.Cache).LoadByWindowAccountName(this.User.Identity.Name);
+            }
+        }
 
         #endregion Properties
 
         public abstract string MenuItemName();
-
-        // public abstract string[] CapabilityNames();
 
         public static string RootPath(HttpContext context)
         {
@@ -58,40 +57,42 @@ namespace MinhLam.Framework.Application.UI
             return StringHelpers.EncryptQueryString(queryString);
         }
 
-        //public virtual void CheckCapabilities()
-        //{
-        //    if (IgnoreCapabilityCheck == false)
-        //    {
-        //        foreach (var capabilityName in CapabilityNames())
-        //        {
-        //            // Check if user has the capability to view this screen
-        //            ENTCapabilityBO capability = Globals.GetCapabilities(this.Cache).GetByName(capabilityName);
-        //            if (capability == null)
-        //            {
-        //                throw new Exception("Security is not enabled for this page. " + this.ToString());
-        //            }
-        //            else
-        //            {
-        //                switch (CurrentUser.GetCapabilityAccess(capability.ID,
-        //                    Globals.GetRoles(this.Cache)))
-        //                {
-        //                    case ENTRoleCapabilityEO.CapabilityAccessFlagEnum.None:
-        //                        NoAccessToPage(capabilityName);
-        //                        break;
-        //                    case ENTRoleCapabilityEO.CapabilityAccessFlagEnum.ReadOnly:
-        //                        MakeFormReadOnly(capabilityName, this.Controls);
-        //                        break;
-        //                    case ENTRoleCapabilityEO.CapabilityAccessFlagEnum.Edit:
-        //                        break;
-        //                    default:
-        //                        throw new Exception("Unknown access for this screen. " + capability.CapabilityName);
-        //                }
-        //            }
+        public virtual void CheckCapabilities()
+        {
+            if (IgnoreCapabilityCheck == false)
+            {
+                foreach (var capabilityName in CapabilityNames())
+                {
+                    // Check if user has the capability to view this screen
+                    CapabilityModel capability = Globals.GetCapabilities(this.Cache).GetByName(capabilityName);
+                    if (capability == null)
+                    {
+                        throw new Exception("Bảo mật chưa được chỉnh cho trang này. " + this.ToString());
+                    }
+                    else
+                    {
+                        switch (CurrentUser.GetAccess(capability.Id,
+                            Globals.GetRoles(this.Cache)))
+                        {
+                            case RoleCapabilityModel.CapabilityAccessFlagEnum.None:
+                                NoAccessToPage(capabilityName);
+                                break;
+                            case RoleCapabilityModel.CapabilityAccessFlagEnum.ReadOnly:
+                                MakeFormReadOnly(capabilityName, this.Controls);
+                                break;
+                            case RoleCapabilityModel.CapabilityAccessFlagEnum.Edit:
+                                break;
+                            default:
+                                throw new Exception("Unknown access for this screen. " + capability.Name);
+                        }
+                    }
 
-        //            capability = null;
-        //        }
-        //    }
-        //}
+                    capability = null;
+                }
+            }
+        }
+
+        public abstract string[] CapabilityNames();
 
         protected void NoAccessToPage(string capabilityName)
         {
@@ -101,7 +102,8 @@ namespace MinhLam.Framework.Application.UI
         public virtual void MakeFormReadOnly(string capabilityName, ControlCollection controls)
         {
             ReadOnly = true;
-
+            MakeControlsReadOnly(controls);
+            CustomReadOnlyLogic(capabilityName);
         }
 
         public void MakeControlsReadOnly(ControlCollection controls)

@@ -15,6 +15,7 @@ namespace MinhLam.Framework.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            IgnoreCapabilityCheck = true;
             Master.AddButton_Click += new EditGrid.ButtonClickedHandler(Master_AddButton_Click);
             Master.SearchButton_Click += new EditGrid.ButtonClickedHandler(Master_SearchButton_Click);
 
@@ -66,6 +67,12 @@ namespace MinhLam.Framework.Web
         {
             return "Menus";
         }
+
+        public override string[] CapabilityNames()
+        {
+            return new string[] { "" };
+        }
+
 
         protected void CustomGridView1_RowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
         {

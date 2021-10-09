@@ -12,6 +12,7 @@ namespace MinhLam.Framework.Application
         public string CreatedBy { get; set; }
         public DateTime UpdatedDate { get; set; }
         public string UpdatedBy { get;  set; }
+        public bool IsDeleted { get; set; }
 
         /// <summary>
         /// This returns the text that should appear in a list box or drop down list for this object.

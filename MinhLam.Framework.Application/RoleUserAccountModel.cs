@@ -5,6 +5,7 @@ using System;
 
 namespace MinhLam.Framework.Application
 {
+    [Serializable()]
     public class RoleUserAccountModel : BaseModel
     {
         public int Id { get; set; }
@@ -51,16 +52,27 @@ namespace MinhLam.Framework.Application
                         var roleUserAccount = new RoleUserAccount();
                         roleUserAccount.RoleId = RoleId;
                         roleUserAccount.AccountId = AccountId;
+                        roleUserAccount.CreatedDate = DateTime.Now;
+                        roleUserAccount.CreatedBy = userName;
+                        roleUserAccount.UpdatedDate = DateTime.Now;
+                        roleUserAccount.UpdatedBy = userName;
                         var id = new RoleUserAccountData().Insert(roleUserAccount);
                         Id = id;
                     }
-                    else
+                    else if (IsDeleted == false)
                     {
                         var roleUserAccount = new RoleUserAccountData().GetById(Id);
                         roleUserAccount.RoleId = RoleId;
                         roleUserAccount.AccountId = AccountId;
+                        roleUserAccount.UpdatedDate = DateTime.Now;
+                        roleUserAccount.UpdatedBy = userName;
                         new RoleUserAccountData().Update(roleUserAccount);
                         Id = roleUserAccount.Id;
+                    }
+                    else
+                    {
+                        var roleUserAccount = new RoleUserAccountData().GetById(Id);
+                        new RoleUserAccountData().Remove(roleUserAccount);
                     }
 
                     return true;

@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Quản lý phân quyền</title>
+    <title>Quản lý chấm công nhân viên</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -33,6 +33,7 @@
     <link href="/content/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
 
     <link href="/content/pager.css" rel="stylesheet">
+    <link href="/content/custom.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -56,7 +57,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">Phân Quyền Ứng Dụng</a>
+                    <a class="navbar-brand" href="index.html">Quản lý chấm công nhân viên</a>
                 </div>
                 <!-- /.navbar-header -->
 

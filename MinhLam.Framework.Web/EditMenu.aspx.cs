@@ -75,6 +75,7 @@ namespace MinhLam.Framework.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            IgnoreCapabilityCheck = true;
             Master.SaveButton_Click += new EditPage.ButtonClickedHandler(Master_SaveButton_Click);
             Master.CancelButton_Click += new EditPage.ButtonClickedHandler(Master_CancelButton_Click);
         }
@@ -130,6 +131,11 @@ namespace MinhLam.Framework.Web
             }
 
             ddlParentMenuItemId.Items.Insert(0, new ListItem("Không có menu cha", ""));
+        }
+
+        public override string[] CapabilityNames()
+        {
+            return new string[] { "" };
         }
     }
 }

@@ -8,6 +8,11 @@ namespace MinhLam.Framework.Web
     {
         private const string VIEW_STATE_KEY_MENU = "UserAccount";
 
+        public override string[] CapabilityNames()
+        {
+            return new string[] { "" };
+        }
+
         public override string MenuItemName()
         {
             return "Accounts";

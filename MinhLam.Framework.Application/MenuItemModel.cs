@@ -83,8 +83,8 @@ namespace MinhLam.Framework.Application
                         menuItem.UpdatedBy = UpdatedBy;
                         menuItem.UpdatedDate = UpdatedDate;
 
-                        new MenuItemData().Insert(menuItem);
-                        Id = menuItem.Id;
+                        var id = new MenuItemData().Insert(menuItem);
+                        Id = id;
                     }
                     else
                     {
@@ -181,9 +181,14 @@ namespace MinhLam.Framework.Application
             {
                 validationErrors.Add("Menu này chưa tồn tại");
             }
+
+            if (new CapabilityData().CheckMenuInUse(Id))
+            {
+                validationErrors.Add("Menu này đã được sử dụng. Không thể xóa.");
+            }
         }
 
-        public bool IsNewRecord()
+        protected override bool IsNewRecord()
         {
             return Id == 0;
         }

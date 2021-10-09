@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using MinhLam.Framework.Data.Entities;
 using MinhLam.Framework.Data.Repo;
 
@@ -27,6 +28,20 @@ namespace MinhLam.Framework.Application
                 userAccountModel.MapEntityToProperties(userAccount);
                 this.Add(userAccountModel);
             }
+        }
+
+        public void LoadWithRoles()
+        {
+            Load();
+            foreach (var user in this)
+            {
+                user.Roles.LoadByAccountId(user.Id);
+            }
+        }
+
+        public UserAccountModel LoadByWindowAccountName(string windowAccountName)
+        {
+            return this.SingleOrDefault(x => x.WindowAccountName.ToUpper() == windowAccountName.ToUpper());
         }
     }
 }

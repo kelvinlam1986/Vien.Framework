@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,9 +45,17 @@
   <ItemGroup>
     <Compile Include="BaseModel.cs" />
     <Compile Include="BaseModelList.cs" />
+    <Compile Include="CapabilityModel.cs" />
+    <Compile Include="CapabilityModelList.cs" />
     <Compile Include="MenuItemModel.cs" />
     <Compile Include="MenuItemModelList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleCapabilityModel.cs" />
+    <Compile Include="RoleCapabilityModelList.cs" />
+    <Compile Include="RoleModel.cs" />
+    <Compile Include="RoleModelList.cs" />
+    <Compile Include="RoleUserAccountModel.cs" />
+    <Compile Include="RoleUserAccountModelList.cs" />
     <Compile Include="UI\BaseEditPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>

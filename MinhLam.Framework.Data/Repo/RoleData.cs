@@ -13,12 +13,13 @@ namespace MinhLam.Framework.Data.Repo
         {
             string sql = @"INSERT INTO dbo.Role " +
                          "(Name, CreatedDate, CreatedBy, UpdatedDate, UpdatedBy) " +
-                         "VALUES(@Name, @CreatedDate, @CreatedBy, @UpdatedDate, @UpdatedBy)";
+                         "VALUES(@Name, @CreatedDate, @CreatedBy, @UpdatedDate, @UpdatedBy); " +
+                         "SELECT CAST(SCOPE_IDENTITY() as int)";
             try
             {
                 using (var connection = new SqlConnection(ConnectionString))
                 {
-                    int rowEffected = connection.Execute(sql,
+                    int id = connection.Query<int>(sql,
                         new
                         {
                             Name = entity.Name,
@@ -26,8 +27,8 @@ namespace MinhLam.Framework.Data.Repo
                             CreatedBy = entity.CreatedBy,
                             UpdatedDate = entity.UpdatedDate,
                             UpdatedBy = entity.UpdatedBy
-                        });
-                    return rowEffected;
+                        }).Single();
+                    return id;
                 }
 
             }
@@ -124,6 +125,54 @@ namespace MinhLam.Framework.Data.Repo
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        public List<Role> GetByUserAccountId(int userAccountId)
+        {
+            string sql = "SELECT Role.Id, Role.Name, Role.CreatedDate, " +
+                             "Role.CreatedBy, Role.UpdatedDate, " +
+                             "Role.UpdatedBy " +
+                         "FROM Role " +
+                         "INNER JOIN RoleUserAccount " +
+                            "ON Role.Id = RoleUserAccount.RoleId " +
+                         "WHERE AccountId = @AccountId";
+
+            try
+            {
+                using (var connection = new SqlConnection(ConnectionString))
+                {
+                    var roles = connection.Query<Role>(sql, new { AccountId = userAccountId }).ToList();
+                    return roles;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public bool CheckExisting(int id)
+        {
+            var existingItem = GetById(id);
+            return existingItem != null;
+        }
+
+        public bool CheckExistingName(int id, string name)
+        {
+            string sql = "SELECT * FROM dbo.Role WHERE Name = @Name AND Id != @Id";
+
+            try
+            {
+                using (var connection = new SqlConnection(ConnectionString))
+                {
+                    var menuItem = connection.QueryFirstOrDefault<UserAccount>(sql, new { Name = name, Id = id });
+                    return menuItem != null;
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
     }

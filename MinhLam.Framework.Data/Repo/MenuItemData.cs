@@ -92,12 +92,13 @@ namespace MinhLam.Framework.Data.Repo
         public override int Insert(MenuItem entity)
         {
             string sql = @"INSERT INTO dbo.MenuItem (MenuItemName, DisplayName, Description, Url, ParentMenuItemId, DisplaySequence, IsAlwaysEnabled, Icon, CreatedDate, CreatedBy, UpdatedDate, UpdatedBy) " +
-                        "VALUES(@MenuItemName, @DisplayName, @Description, @Url, @ParentMenuItemId, @DisplaySequence, @IsAlwaysEnabled, @Icon, @CreatedDate, @CreatedBy, @UpdatedDate, @UpdatedBy)";
+                        "VALUES(@MenuItemName, @DisplayName, @Description, @Url, @ParentMenuItemId, @DisplaySequence, @IsAlwaysEnabled, @Icon, @CreatedDate, @CreatedBy, @UpdatedDate, @UpdatedBy); " +
+                        "SELECT CAST(SCOPE_IDENTITY() as int)";
             try
             {
                 using (var connection = new SqlConnection(ConnectionString))
                 {
-                    int rowEffected = connection.Execute(sql,
+                    int id = connection.Query<int>(sql,
                         new
                         {
                             MenuItemName = entity.MenuItemName,
@@ -112,8 +113,8 @@ namespace MinhLam.Framework.Data.Repo
                             CreatedBy = entity.CreatedBy,
                             UpdatedDate = entity.UpdatedDate,
                             UpdatedBy = entity.UpdatedBy
-                        });
-                    return rowEffected;
+                        }).Single();
+                    return id;
                 }
 
             }

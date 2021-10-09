@@ -13,12 +13,13 @@ namespace MinhLam.Framework.Data.Repo
         {
             string sql = @"INSERT INTO dbo.Capability " +
                          "(Name, MenuItemId, AccessType, CreatedDate, CreatedBy, UpdatedDate, UpdatedBy) " +
-                         "VALUES(@Name, @MenuItemId, @CreatedDate, @CreatedBy, @UpdatedDate, @UpdatedBy)";
+                         "VALUES(@Name, @MenuItemId, @CreatedDate, @CreatedBy, @UpdatedDate, @UpdatedBy); " +
+                         "SELECT CAST(SCOPE_IDENTITY() as int)";
             try
             {
                 using (var connection = new SqlConnection(ConnectionString))
                 {
-                    int rowEffected = connection.Execute(sql,
+                    int id = connection.Query<int>(sql,
                         new
                         {
                             Name = entity.Name,
@@ -28,8 +29,8 @@ namespace MinhLam.Framework.Data.Repo
                             CreatedBy = entity.CreatedBy,
                             UpdatedDate = entity.UpdatedDate,
                             UpdatedBy = entity.UpdatedBy
-                        });
-                    return rowEffected;
+                        }).Single();
+                    return id;
                 }
 
             }
@@ -125,6 +126,35 @@ namespace MinhLam.Framework.Data.Repo
                 {
                     var capability = connection.QueryFirst<Capability>(sql, new { Id = id });
                     return capability;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public bool CheckExisting(int id)
+        {
+            var existingItem = GetById(id);
+            return existingItem != null;
+        }
+
+        public bool CheckMenuInUse(int menuId)
+        {
+            var capabilities = GetByMenuId(menuId);
+            return capabilities.Count > 0;
+        }
+
+        public List<Capability> GetByMenuId(int menuItemId)
+        {
+            string sql = "SELECT * FROM dbo.Capability WHERE MenuItemId = @MenuItemId";
+            try
+            {
+                using (var connection = new SqlConnection(ConnectionString))
+                {
+                    var capabilities = connection.Query<Capability>(sql, new { MenuItemId = menuItemId }).ToList();
+                    return capabilities;
                 }
             }
             catch (Exception)

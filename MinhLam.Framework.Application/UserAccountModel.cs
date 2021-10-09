@@ -13,6 +13,12 @@ namespace MinhLam.Framework.Application
         public string FullName { get; set; }
         public string Email { get; set; }
         public bool IsActive { get; set; }
+        public RoleModelList Roles { get; set; }
+
+        public UserAccountModel()
+        {
+            Roles = new RoleModelList();
+        }
 
         public override void Init()
         {
@@ -25,10 +31,10 @@ namespace MinhLam.Framework.Application
             {
                 var repo = new UserAccountData();
                 int key = Convert.ToInt32(id);
-                var menuItem = repo.GetById(key);
-                if (menuItem != null)
+                var account = repo.GetById(key);
+                if (account != null)
                 {
-                    MapEntityToProperties(menuItem);
+                    MapEntityToProperties(account);
                     return true;
                 }
                 else
@@ -61,8 +67,8 @@ namespace MinhLam.Framework.Application
                         userAccount.CreatedDate = DateTime.Now;
                         userAccount.UpdatedBy = userName;
                         userAccount.UpdatedDate = DateTime.Now;
-                        new UserAccountData().Insert(userAccount);
-                        Id = userAccount.Id;
+                        var id = new UserAccountData().Insert(userAccount);
+                        Id = id;
                     }
                     else
                     {
@@ -144,11 +150,41 @@ namespace MinhLam.Framework.Application
             {
                 validationErrors.Add("Tài khoản này chưa tồn tại");
             }
+
+            if (new RoleUserAccountData().CheckAccountInUse(Id))
+            {
+                validationErrors.Add("Tài khoản này đã được sử dụng bạn không thể xóa.");
+            }
         }
-        
-        public bool IsNewRecord()
+
+        protected override bool IsNewRecord()
         {
             return Id == 0;
+        }
+
+        public RoleCapabilityModel.CapabilityAccessFlagEnum GetAccess(int capabilityId, RoleModelList currentRoles)
+        {
+            RoleCapabilityModel.CapabilityAccessFlagEnum accessFlag = RoleCapabilityModel.CapabilityAccessFlagEnum.None;
+            foreach (var role in Roles)
+            {
+                var roleWithCapabilities = currentRoles.GetById(role.Id);
+                foreach (var capability in roleWithCapabilities.RoleCapabilities)
+                {
+                    if (capability.Id == capabilityId)
+                    {
+                        if (capability.AccessFlag == RoleCapabilityModel.CapabilityAccessFlagEnum.Edit)
+                        {
+                            return RoleCapabilityModel.CapabilityAccessFlagEnum.Edit;
+                        }
+                        else if (capability.AccessFlag == RoleCapabilityModel.CapabilityAccessFlagEnum.ReadOnly)
+                        {
+                            accessFlag = RoleCapabilityModel.CapabilityAccessFlagEnum.ReadOnly;
+                        }
+                    }
+                }
+            }
+
+            return accessFlag;
         }
     }
 }

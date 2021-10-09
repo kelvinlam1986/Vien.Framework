@@ -93,12 +93,13 @@ namespace MinhLam.Framework.Data.Repo
         public override int Insert(UserAccount entity)
         {
             string sql = @"INSERT INTO dbo.UserAccount (WindowAccountName, FullName, Email, IsActive, CreatedDate, CreatedBy, UpdatedDate, UpdatedBy) " +
-                        "VALUES(@WindowAccountName, @FullName, @Email, @IsActive, @CreatedDate, @CreatedBy, @UpdatedDate, @UpdatedBy)";
+                        "VALUES(@WindowAccountName, @FullName, @Email, @IsActive, @CreatedDate, @CreatedBy, @UpdatedDate, @UpdatedBy); " +
+                        "SELECT CAST(SCOPE_IDENTITY() as int)";
             try
             {
                 using (var connection = new SqlConnection(ConnectionString))
                 {
-                    int rowEffected = connection.Execute(sql,
+                    int id = connection.Query<int>(sql,
                         new
                         {
                             WindowAccountName = entity.WindowAccountName,
@@ -109,8 +110,8 @@ namespace MinhLam.Framework.Data.Repo
                             CreatedBy = entity.CreatedBy,
                             UpdatedDate = entity.UpdatedDate,
                             UpdatedBy = entity.UpdatedBy
-                        });
-                    return rowEffected;
+                        }).Single();
+                    return id;
                 }
 
             }
@@ -204,5 +205,6 @@ namespace MinhLam.Framework.Data.Repo
                 throw e;
             }
         }
+
     }
 }

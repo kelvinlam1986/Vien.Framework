@@ -13,12 +13,13 @@ namespace MinhLam.Framework.Data.Repo
         {
             string sql = @"INSERT INTO dbo.RoleCapability " +
                         "(RoleId, CapabilityId, AccessFlag, CreatedDate, CreatedBy, UpdatedDate, UpdatedBy) " +
-                        "VALUES(@RoleId, @CapabilityId, @AccessFlag, @CreatedDate, @CreatedBy, @UpdatedDate, @UpdatedBy)";
+                        "VALUES(@RoleId, @CapabilityId, @AccessFlag, @CreatedDate, @CreatedBy, @UpdatedDate, @UpdatedBy); " +
+                        "SELECT CAST(SCOPE_IDENTITY() as int)";
             try
             {
                 using (var connection = new SqlConnection(ConnectionString))
                 {
-                    int rowEffected = connection.Execute(sql,
+                    int id = connection.Query<int>(sql,
                         new
                         {
                             RoleId = entity.RoleId,
@@ -28,8 +29,8 @@ namespace MinhLam.Framework.Data.Repo
                             CreatedBy = entity.CreatedBy,
                             UpdatedDate = entity.UpdatedDate,
                             UpdatedBy = entity.UpdatedBy
-                        });
-                    return rowEffected;
+                        }).Single();
+                    return id;
                 }
 
             }
@@ -132,5 +133,40 @@ namespace MinhLam.Framework.Data.Repo
                 throw;
             }
         }
+
+        public List<RoleCapability> GetByRoleId(int roleId)
+        {
+            string sql = "SELECT * FROM dbo.RoleCapability WHERE RoleId = @RoleId ORDER BY CreatedDate, UpdatedDate";
+            try
+            {
+                using (var connection = new SqlConnection(ConnectionString))
+                {
+                    var roleCapability = connection.Query<RoleCapability>(sql, new { RoleId = roleId }).ToList();
+                    return roleCapability;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        
+        public bool CheckExisting(int id)
+        {
+            var existingItem = GetById(id);
+            return existingItem != null;
+        }
+
+        public bool CheckRoleInUse(int roleId)
+        {
+            var roleCapabilities = GetByRoleId(roleId);
+            if (roleCapabilities.Count > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
     }
 }

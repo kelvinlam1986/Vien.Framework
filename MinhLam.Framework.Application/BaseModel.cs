@@ -62,6 +62,8 @@ namespace MinhLam.Framework.Application
         /// </summary>
         protected abstract void DeleteForReal();
 
+        protected abstract bool IsNewRecord();
+
 
         /// <summary>
         /// Deletes the record.

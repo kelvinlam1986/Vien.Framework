@@ -118,7 +118,7 @@ namespace MinhLam.Framework.Data.Repo
 
         public Capability GetById(int id)
         {
-            string sql = "SELECT * FROM dbo.UserAccount WHERE Id = @Id";
+            string sql = "SELECT * FROM dbo.Capability WHERE Id = @Id";
 
             try
             {

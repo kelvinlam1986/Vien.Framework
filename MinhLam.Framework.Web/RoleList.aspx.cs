@@ -101,7 +101,7 @@ namespace Vien.Framework.Web
 
         public override string[] CapabilityNames()
         {
-            return new string[] { "Roles" };
+            return new string[] { "Role" };
         }
     }
 }

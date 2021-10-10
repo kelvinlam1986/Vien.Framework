@@ -10,7 +10,7 @@ namespace MinhLam.Framework.Web
 
         public override string[] CapabilityNames()
         {
-            return new string[] { "" };
+            return new string[] { "User" };
         }
 
         public override string MenuItemName()

@@ -192,5 +192,44 @@ namespace MinhLam.Framework.Application
         {
             return Id == 0;
         }
+
+        public bool HasAccessToMenu(UserAccountModel userAccount, RoleModelList roles)
+        {
+            if (IsAlwaysEnabled)
+            {
+                return true;
+            }
+            else
+            {
+                foreach (var role in roles)
+                {
+                    if (role.RoleUserAccounts.IsUserInRole(userAccount.Id))
+                    {
+                        var capabilities = role.RoleCapabilities.GetListByMenuItemId(Id);
+                        foreach (var capability in capabilities)
+                        {
+                            if ((capability != null) 
+                                && (capability.AccessFlag != RoleCapabilityModel.CapabilityAccessFlagEnum.None))
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (ChildMenuItems.Count > 0)
+            {
+                foreach (var child in ChildMenuItems)
+                {
+                    if (child.HasAccessToMenu(userAccount, roles))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
     }
 }

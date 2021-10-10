@@ -9,6 +9,12 @@ namespace Vien.Framework.Web
         {
         }
 
+        protected override void OnInit(EventArgs e)
+        {
+            IgnoreCapabilityCheck = true;
+            base.OnInit(e);
+        }
+
         public override string MenuItemName()
         {
             return "Home";

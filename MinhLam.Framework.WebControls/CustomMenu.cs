@@ -21,6 +21,12 @@ namespace MinhLam.Framework.WebControls
         [Description("Enter the root path for your application.  This is used to determine the path for all items in the menu.")]
         public string RootPath { get; set; }
 
+        [Browsable(false)]
+        public UserAccountModel UserAccount { get; set; }
+
+        [Browsable(false)]
+        public RoleModelList Roles { get; set; }
+
         protected override void RenderContents(HtmlTextWriter writer)
         {
             base.RenderContents(writer);
@@ -37,35 +43,40 @@ namespace MinhLam.Framework.WebControls
                 int i = 0;
                 foreach (var mi in MenuItems)
                 {
-                    var parentUrl = string.IsNullOrEmpty(mi.Url) ? "#" : mi.Url;
-                    html += "<li>";
-                    if (mi.ChildMenuItems.Count == 0)
+                    if (mi.HasAccessToMenu(UserAccount, Roles))
                     {
-                        html += $"<a href='{parentUrl}'><i class='fa {mi.Icon}'></i>&nbsp;{mi.DisplayName}</a>";
-                    }
-                    else
-                    {
-                        html += $"<a href='#'><i class='fa {mi.Icon}'></i>&nbsp;{mi.DisplayName}<span class='fa arrow'></span></a>";
-
-                    }
-
-
-                    if (mi.ChildMenuItems.Count > 0)
-                    {
-
-                        html += "<ul class='nav nav-second-level collapse'>";
-                        foreach (var cmi in mi.ChildMenuItems)
+                        var parentUrl = string.IsNullOrEmpty(mi.Url) ? "#" : mi.Url;
+                        html += "<li>";
+                        if (mi.ChildMenuItems.Count == 0)
                         {
-                            var childUrl = string.IsNullOrEmpty(mi.Url) ? "#" : mi.Url;
-                            html += "<li>";
-                            html += $"<a href='{childUrl}'><i class='fa {cmi.Icon}'></i>&nbsp;{cmi.DisplayName}</a>";
-                            html += "</li>";
+                            html += $"<a href='{parentUrl}'><i class='fa {mi.Icon}'></i>&nbsp;{mi.DisplayName}</a>";
                         }
-                        html += "</ul>";
+                        else
+                        {
+                            html += $"<a href='#'><i class='fa {mi.Icon}'></i>&nbsp;{mi.DisplayName}<span class='fa arrow'></span></a>";
+
+                        }
+
+
+                        if (mi.ChildMenuItems.Count > 0)
+                        {
+
+                            html += "<ul class='nav nav-second-level collapse'>";
+                            foreach (var cmi in mi.ChildMenuItems)
+                            {
+                                var childUrl = string.IsNullOrEmpty(mi.Url) ? "#" : mi.Url;
+                                html += "<li>";
+                                html += $"<a href='{childUrl}'><i class='fa {cmi.Icon}'></i>&nbsp;{cmi.DisplayName}</a>";
+                                html += "</li>";
+                            }
+                            html += "</ul>";
+                        }
+
+                        html += "</li>";
+                        i++;
                     }
 
-                    html += "</li>";
-                    i++;
+                   
                 }
 
                 html += "</ul>";
@@ -88,5 +99,7 @@ namespace MinhLam.Framework.WebControls
         {
             writer.Write("");
         }
+
+       
     }
 }

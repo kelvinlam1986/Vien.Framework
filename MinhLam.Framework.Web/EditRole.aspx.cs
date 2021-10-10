@@ -16,7 +16,7 @@ namespace Vien.Framework.Web
 
         public override string[] CapabilityNames()
         {
-            return new string[] { "Roles" };
+            return new string[] { "Role" };
         }
 
         public override string MenuItemName()
@@ -302,6 +302,21 @@ namespace Vien.Framework.Web
         protected void btnMoveAllToUnSelected_Click(object sender, EventArgs e)
         {
             MoveItems(lstSelectedUsers, lstUnSelectedUsers, true);
+        }
+
+        public override void CustomReadOnlyLogic(string capabilityName)
+        {
+            base.CustomReadOnlyLogic(capabilityName);
+
+            //If this is read only then do not show the available choice for the users or
+            //the buttons to swap between list boxes
+            lstUnSelectedUsers.Visible = false;
+            btnMoveAllToSelected.Visible = false;
+            btnMoveAllToUnSelected.Visible = false;
+            btnMoveToSelected.Visible = false;
+            btnMoveToUnSelected.Visible = false;
+            lblUsers.Visible = false;
+            lblUserHeader.Visible = false;
         }
     }
 }

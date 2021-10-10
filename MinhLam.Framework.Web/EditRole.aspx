@@ -40,7 +40,7 @@
                 </div>
                 <div class="col-md-5">
                     <div class="form-group">
-                        <asp:Label ID="Label1" runat="server" Text="Users trong vai trò"></asp:Label>
+                        <asp:Label ID="lblUserHeader" runat="server" Text="Users trong vai trò"></asp:Label>
                         <asp:ListBox ID="lstSelectedUsers" SelectionMode="Multiple" Rows="10" CssClass="form-control" runat="server"></asp:ListBox>
                     </div>
                 </div>

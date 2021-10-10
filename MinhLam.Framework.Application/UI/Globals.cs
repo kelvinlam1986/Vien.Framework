@@ -95,7 +95,7 @@ namespace MinhLam.Framework.Application.UI
 
         public static void LoadRoles(Cache cache)
         {
-            RoleCapabilityModelList roles = new RoleCapabilityModelList();
+            RoleModelList roles = new RoleModelList();
             roles.Load();
 
             cache.Remove(CACHE_KEY_ROLES);

@@ -15,7 +15,6 @@ namespace MinhLam.Framework.Application.UI
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
-            IgnoreCapabilityCheck = true;
             CheckCapabilities();
         }
 
@@ -29,7 +28,7 @@ namespace MinhLam.Framework.Application.UI
         {
             get
             {
-                return Globals.GetUsers(this.Cache).LoadByWindowAccountName(this.User.Identity.Name);
+                return Globals.GetUsers(this.Cache).LoadByWindowAccountName(System.Web.HttpContext.Current.Request.LogonUserIdentity.Name);
             }
         }
 

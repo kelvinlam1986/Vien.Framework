@@ -15,6 +15,7 @@ namespace Vien.Framework.Web
         protected void Page_Load(object sender, EventArgs e)
         {
             Master.AddButton_Click += new EditGrid.ButtonClickedHandler(Master_AddButton_Click);
+            Master.SearchButton_Click += new EditGrid.ButtonClickedHandler(Master_SearchButton_Click);
             if (!IsPostBack)
             {
                 cgvRoles.ListClassName = typeof(RoleModelList).AssemblyQualifiedName;
@@ -92,6 +93,14 @@ namespace Vien.Framework.Web
         private void Master_AddButton_Click(object sender, EventArgs e)
         {
             Response.Redirect("EditRole.aspx" + EncryptQueryString("id=0"));
+        }
+
+        private void Master_SearchButton_Click(object sender, EventArgs e)
+        {
+            cgvRoles.ListClassName = typeof(RoleModelList).AssemblyQualifiedName;
+            cgvRoles.LoadMethodName = "Search";
+            cgvRoles.LoadMethodParameters.Add(this.Master.SearchString);
+            cgvRoles.DataBind();
         }
 
         public override string MenuItemName()

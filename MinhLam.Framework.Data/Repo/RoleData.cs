@@ -152,6 +152,43 @@ namespace MinhLam.Framework.Data.Repo
             }
         }
 
+        public List<Role> Search(string keyword)
+        {
+
+            if (string.IsNullOrWhiteSpace(keyword) == false)
+            {
+                string sql = "SELECT * FROM dbo.Role WHERE Name like @Keyword ORDER BY CreatedDate, UpdatedDate ";
+                try
+                {
+                    using (var connection = new SqlConnection(ConnectionString))
+                    {
+                        var roles = connection.Query<Role>(sql, new { Keyword = $"%{keyword}%" }).ToList();
+                        return roles;
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+            else
+            {
+                string sql = "SELECT * FROM dbo.Role ORDER BY CreatedDate, UpdatedDate";
+                try
+                {
+                    using (var connection = new SqlConnection(ConnectionString))
+                    {
+                        var roles = connection.Query<Role>(sql).ToList();
+                        return roles;
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+        }
+
         public bool CheckExisting(int id)
         {
             var existingItem = GetById(id);
